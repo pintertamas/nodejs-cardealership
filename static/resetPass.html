@@ -12,8 +12,31 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
           integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+
+    <style>
+        body {
+            align-content: center;
+        }
+
+        .reset-pass {
+            display: flow;
+            justify-content: center;
+            margin-left: 25%;
+            width: 50%;
+            margin-top: 10%;
+        }
+
+        .button {
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-
+<div class="reset-pass justify-content-center">
+    <h1 class="display-5">Forgot your password?</h1>
+    <label class="w-auto">Enter your email address to reset your password</label>
+    <input type="text" name="resetPass" id="text" class="form-control input_user" placeholder="email">
+    <a href="index.html"><button type="button" name="button" class="button btn btn-info" style="color: white">Reset Password</button></a>
+</div>
 </body>
 </html>
