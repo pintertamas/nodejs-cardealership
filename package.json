@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://gitlab.com/pTomi/javascript_homework/issues"
   },
-  "homepage": "https://gitlab.com/pTomi/javascript_homework#readme"
+  "homepage": "https://gitlab.com/pTomi/javascript_homework#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
