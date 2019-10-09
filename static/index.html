@@ -46,10 +46,10 @@
         }
 
         .logo-box {
-            width: 70%;
+            width: 100%;
             background-color: rgba(60,60,60,0.8);
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-            border-radius: 10px;
+            border-radius: 0;
             justify-content: center;
             align-items: center;
             text-justify: auto;
@@ -58,7 +58,7 @@
             text-align: center;
             display: flex;
             position: center;
-            margin-left: 15%;
+            margin-left: 0;
         }
 
         .form_container {
@@ -73,6 +73,12 @@
         .login_btn:focus {
             box-shadow: none;
             outline: 0;
+        }
+
+        .login_btn_admin {
+            width: 100%;
+            background: #3c3c3c;
+            border-radius: 0;
         }
 
         .login_container {
@@ -141,7 +147,8 @@
             <div class="input-group-append h-auto w-auto">
                 <span class="input-group-text"><i class="fas fa-user-cog"></i></span>
             </div>
-            <a href="adminPage.html"><input type="password" name="adminPassword" class="form-control input_pass" value="" placeholder="admin"></a>
+            <input type="password" name="adminPassword" class="form-control input_pass" value="" placeholder="admin">
+            <a href="adminPage.html"><button type="button" name="button" class="btn login_btn_admin" style="color: white">Login</button></a>
         </div>
     </div>
 </div>
