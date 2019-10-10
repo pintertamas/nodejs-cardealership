@@ -14,6 +14,11 @@
           integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 
     <style>
+        .button {
+            margin-left: 5px;
+            margin-right: 10px;
+        }
+
         .navbar-custom {
             background-color: rgb(120,160,180);
         }
@@ -40,9 +45,6 @@
 
 <nav class="navbar navbar-expand-sm navbar-custom">
     <a href="/" class="navbar-brand">Home</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCustom">
-        <i class="fa fa-bars fa-lg py-1 text-white"></i>
-    </button>
     <div class="navbar-collapse collapse" id="navbarCustom">
         <ul class="navbar-nav">
             <li class="nav-item active">
@@ -55,7 +57,7 @@
                 <a class="nav-link" href="#">Add Car</a>
             </li>
         </ul>
-        <span class="ml-auto navbar-text">Log out</span>
+        <a class="ml-auto navbar-text nav-link" href="#">Log out</a>
     </div>
 </nav>
 
@@ -63,33 +65,54 @@
     <thead>
     <tr>
         <th scope="col">#</th>
-        <th scope="col">Name</th>
         <th scope="col">Brand</th>
-        <th scope="col">Mileage</th>
-        <th scope="col">Price</th>
+        <th scope="col">Mileage (km)</th>
+        <th scope="col">Price (€)</th>
+        <th scope="col">Options</th>
     </tr>
     </thead>
     <tbody>
     <tr>
         <th scope="row">1</th>
-        <td>Mark</td>
         <td>Tesla</td>
         <td>42069</td>
         <td>200000</td>
+        <td>
+            <div class="d-flex justify-content-center">
+                <a href="editCar.html"><button class="button btn btn-sm btn-primary">
+                    <i class="fas fa-edit"></i></button></a>
+                <a href="editCar.html"><button class="button btn btn-sm btn-danger">
+                    <i class="fas fa-trash-alt"></i></button></a>
+            </div>
+        </td>
     </tr>
     <tr>
         <th scope="row">2</th>
-        <td>Geza</td>
         <td>Lamborghini</td>
         <td>23434</td>
         <td>150000</td>
+        <td>
+            <div class="d-flex justify-content-center">
+                <a href="editCar.html"><button class="button btn btn-sm btn-primary">
+                    <i class="fas fa-edit"></i></button></a>
+                <a href="editCar.html"><button class="button btn btn-sm btn-danger">
+                    <i class="fas fa-trash-alt"></i></button></a>
+            </div>
+        </td>
     </tr>
     <tr>
         <th scope="row">3</th>
-        <td>Elemer</td>
         <td>Ferrari</td>
         <td>0</td>
         <td>349900</td>
+        <td>
+            <div class="d-flex justify-content-center">
+                <a href="editCar.html"><button class="button btn btn-sm btn-primary">
+                    <i class="fas fa-edit"></i></button></a>
+                <a href="editCar.html"><button class="button btn btn-sm btn-danger">
+                    <i class="fas fa-trash-alt"></i></button></a>
+            </div>
+        </td>
     </tr>
     </tbody>
 </table>
