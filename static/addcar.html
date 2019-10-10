@@ -14,19 +14,48 @@
           integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 
     <style>
+        body {
+            background: lightgrey;
+        }
+
+        h2 {
+            color: rgb(64, 64, 64);
+            margin-top: 50px;
+        }
+
+        .button {
+            width: available;
+            justify-content: center;
+            display: flex;
+            margin-left: 35%;
+        }
+
+        .custom-file-input ~ .custom-file-label::after {
+            width: available;
+            content: "Choose file";
+            display: flex;
+        }
+
+        .custom-form {
+            display: flow;
+            justify-items: center;
+            margin-left: 35%;
+            width: 30%;
+        }
+
         .navbar-custom {
-            background-color: rgb(120,160,180);
+            background-color: rgb(120, 160, 180);
         }
 
         .navbar-custom .navbar-brand,
         .navbar-custom .navbar-text {
-            color: rgba(255,255,255,.7);
+            color: rgba(255, 255, 255, .7);
             margin-left: 30px;
             margin-right: 30px;
         }
 
         .navbar-custom .navbar-nav .nav-link {
-            color: rgba(255,255,255,.7);
+            color: rgba(255, 255, 255, .7);
         }
 
         .navbar-custom .nav-item.active .nav-link,
@@ -54,6 +83,38 @@
         <a class="ml-auto navbar-text nav-link" href="index.html">Log out</a>
     </div>
 </nav>
+
+<h2 class="d-flex justify-content-center" style="margin-top: 50px">Write here the new car's details</h2>
+<h1></h1>
+<div>
+    <form class="custom-form">
+
+        <div class="file-field">
+            <a class="btn btn-dark darkgrey float-left">
+                <i class="fas fa-paperclip" aria-hidden="true"></i>
+                <input type="file">
+            </a>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text" placeholder="Upload a picture">
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-top: 15px">
+            <input type="text" class="form-control" id="modelName" placeholder="Model name">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" id="mileAge" placeholder="Mileage (km)">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" id="price" placeholder="Price (€)">
+        </div>
+    </form>
+    <a href="carList.html">
+        <button class="button btn btn-dark">
+            Add Car
+        </button>
+    </a>
+</div>
 
 </body>
 </html>
