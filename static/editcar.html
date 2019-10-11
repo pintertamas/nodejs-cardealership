@@ -30,6 +30,12 @@
             margin-left: 35%;
         }
 
+        .custom-file-input ~ .custom-file-label::after {
+            width: available;
+            content: "Choose file";
+            display: flex;
+        }
+
         .custom-form {
             display: flow;
             justify-items: center;
@@ -70,7 +76,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="soldCars.html">Sold Cars</a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="addCar.html">Add Car</a>
             </li>
         </ul>
@@ -78,11 +84,17 @@
     </div>
 </nav>
 
-<h2 class="d-flex justify-content-center" style="margin-top: 50px">Write here the car's new details</h2>
-
+<h2 class="d-flex justify-content-center" style="margin-top: 50px">Write here the car's changed details</h2>
+<h1></h1>
 <div>
     <form class="custom-form">
-        <div class="form-group">
+        <div class="input-group">
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="inputFile" aria-describedby="inputFile">
+                <label class="custom-file-label" for="inputFile">Choose file</label>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top: 15px">
             <input type="text" class="form-control" id="modelName" placeholder="Model name">
         </div>
         <div class="form-group">
@@ -93,7 +105,7 @@
         </div>
     </form>
     <a href="carList.html">
-        <button class="button btn btn-primary btn-dark d-flex">
+        <button class="button btn btn-dark">
             Edit Car
         </button>
     </a>
