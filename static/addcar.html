@@ -23,13 +23,6 @@
             margin-top: 50px;
         }
 
-        .button {
-            width: available;
-            justify-content: center;
-            display: flex;
-            margin-left: 35%;
-        }
-
         .custom-file-input ~ .custom-file-label::after {
             width: available;
             content: "Choose file";
@@ -85,13 +78,14 @@
 </nav>
 
 <h2 class="d-flex justify-content-center" style="margin-top: 50px">Write here the new car's details</h2>
+<hr width="30%">
 <h1></h1>
 <div>
     <form class="custom-form">
         <div class="input-group">
             <div class="custom-file">
                 <input type="file" class="custom-file-input" id="inputFile" aria-describedby="inputFile">
-                <label class="custom-file-label" for="inputFile">Choose file</label>
+                <label class="custom-file-label" for="inputFile" style="color: grey">Upload picture of the car</label>
             </div>
         </div>
         <div class="form-group" style="margin-top: 15px">
@@ -103,12 +97,15 @@
         <div class="form-group">
             <input type="text" class="form-control" id="price" placeholder="Price (€)">
         </div>
+        <div class="form-group" style="margin-top: 15px">
+            <input type="text" class="form-control" id="carDescription" placeholder="Description">
+        </div>
     </form>
-    <a href="carList.html">
-        <button class="button btn btn-dark">
-            Add Car
-        </button>
-    </a>
+    <div>
+        <a href="carList.html">
+            <button class="btn btn-dark" style="margin-left: 35%">Add Car</button>
+        </a>
+    </div>
 </div>
 
 </body>
