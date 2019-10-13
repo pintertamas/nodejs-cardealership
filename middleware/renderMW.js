@@ -10,5 +10,4 @@ module.exports = function (objectrepository, viewName) {
         console.log('render: ' + viewName);
         res.end('Template: ' + viewName);
     };
-
 };

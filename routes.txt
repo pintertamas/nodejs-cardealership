@@ -1,0 +1,83 @@
+Car Dealership
+-index.html - login form, signup, lostpass
+-carList.html - table (edit, delete)
+-soldCars.html - table (delete)
+-addCar.html - form, (add button)
+-editCar.html - form, (edit button)
+-signUp.html - login form (sign up button)
+-resetPass.html - egy mező az emailnek (reset pass button)
+-browseCars.html - lista az autókról (view button, kép is kattintható)
+-inspectCars.html - leírás (buy button)
+
+Routing
+
+renderMW
+
+middleware/auth/
+	checkPassMW.js
+	authMW.js
+
+middleware/user/
+	getUserMW.js
+	saveUserMW.js
+
+middleware/car/
+	getCarMW.js
+	saveCarMW.js
+	delCarMW.js
+	buyCarMW.js
+
+GET, POST  /           - post esetén jelszó ellenőrzés, ha ok, nagymamára redirect, vissza a főoldalra
+	checkPassMW
+	renderMW(index.html)
+
+GET /user/signup
+	getUserMW
+	saveUserMW
+	renderMW(signUp)
+		- ha volt valami érték beküldbe -> form elemek azzal töltődjenek fel
+        - ha nem, akkor nem
+
+GET /shop
+	authMW
+	getUserMW
+	renderMW(browseCars.html)
+
+GET /shop/:carid
+	authMW
+	getCarMW
+	renderMW(inspectCar.html)
+
+GET, POST /shop/:carid/buy
+	authMW
+	getCarMW
+	buyCarMW
+
+GET /admin/carList
+	authMW
+	renderMW(carList.html)
+
+GET /admin/soldCars
+	authMW
+	renderMW(soldCars)
+
+GET, POST /admin/addCar
+	authMW
+	getCarMW
+	saveCarMW
+	renderMW(addCar)
+		- ha volt valami érték beküldve -> form elemek azzal töltődjenek fel
+        - ha nem, akkor nem
+
+GET /admin/editCar/:carid
+	authMW
+	getCarMW
+	saveCarMW
+	renderMW(editCarMW)
+		- ha volt valami érték beküldve -> form elemek azzal töltődjenek fel
+    	- ha nem, akkor nem
+
+GET /admin/deleteCar:carid
+	authMW
+	getCarMW
+	delCarMW
