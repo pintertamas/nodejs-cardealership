@@ -3,7 +3,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <title>Order List</title>
@@ -55,7 +55,6 @@
         .navbar-custom .nav-item:hover .nav-link {
             color: #ffffff;
         }
-
     </style>
 </head>
 <body>
@@ -70,7 +69,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="soldCars.html">Sold Cars</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="addCar.html">Add Car</a>
             </li>
         </ul>
@@ -78,8 +77,8 @@
     </div>
 </nav>
 
-<h2 class="d-flex justify-content-center" style="margin-top: 50px">Change here the car's details</h2>
-<hr width="30%">
+<h2 class="d-flex justify-content-center" style="margin-top: 50px">Write here the new car's details</h2>
+<hr style="width: 30%">
 <h1></h1>
 <div>
     <form class="custom-form">
@@ -101,11 +100,13 @@
         <div class="form-group" style="margin-top: 15px">
             <input type="text" class="form-control" id="carDescription" placeholder="Description">
         </div>
-
     </form>
     <div>
-        <a href="carList.html">
-            <button class="btn btn-dark" style="margin-left: 35%">Edit Car</button>
+        <a href="carList.html" style="text-decoration: none">
+            <button class="btn btn-dark" style="margin-left: 35%">Add Car</button>
+        </a>
+        <a href="carList.html" style="text-decoration: none">
+            <button class="btn btn-outline-secondary" style="margin-left: 5px">Cancel</button>
         </a>
     </div>
 </div>
