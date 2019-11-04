@@ -1,0 +1,50 @@
+<%- include('headerAdmin') -%>
+<nav class="navbar navbar-expand-sm navbar-custom">
+    <a href="/" class="navbar-brand">Home</a>
+    <div class="navbar-collapse collapse" id="navbarCustom">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/admin/carList">Car List</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/soldCars">Sold Cars</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/addCar">Add Car</a>
+            </li>
+        </ul>
+        <a class="ml-auto navbar-text nav-link" href="/">Log out</a>
+    </div>
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+
+    <!-- Portfolio Item Heading -->
+    <h1 class="my-4">Mercedes-AMG GT C Roadster</h1>
+
+    <!-- Portfolio Item Row -->
+    <div class="row">
+
+        <div class="col-md-8">
+            <img class="img-fluid" src="https://www.tynan.com.au/wp-content/uploads/2017/08/amg-gt-50-year-1-952x563.jpg" alt="">
+        </div>
+
+        <div class="col-md-4">
+            <h3 class="my-3">Description</h3>
+            <p>The best car ads are honest and include plenty of details and the right keywords. This is where you get to focus on your car's unique selling points and remember why you bought the car in the first place. To earn a buyer's trust and save time in the long run, include the good and the bad, including any accidents or problems. </p>
+            <h3 class="my-3"> Details</h3>
+            <ul>
+                <li>Mileage: 3455 km</li>
+                <li>Price: €200000</li>
+            </ul>
+            <hr>
+            <a href="/shop"><button class="button btn btn-sm btn-danger">Buy</button></a>
+        </div>
+
+    </div>
+    <!-- /.row -->
+
+</div>
+<!-- /.container -->
+<%- include('footer') -%>

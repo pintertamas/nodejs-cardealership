@@ -1,6 +1,4 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <!DOCTYPE html>
 <html>
@@ -17,47 +15,47 @@
             background: linear-gradient(to bottom, #ab797c 0%, #454140 100%);
         }
 
-      .custom-card {
-          background-color: #3a6d6e;
-          box-shadow: 0 4px 8px 0 rgba(69, 65, 64, 0.8), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-          margin-top: 15%;
-          border-radius: 15px;
-      }
+        .custom-card {
+            background-color: #3a6d6e;
+            box-shadow: 0 4px 8px 0 rgba(69, 65, 64, 0.8), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            margin-top: 15%;
+            border-radius: 15px;
+        }
 
-      .card-heading, .card-body{
-          display: table-cell;
-      }
+        .card-heading, .card-body{
+            display: table-cell;
+        }
 
-      .custom-img {
-          background: url("/signuppic.jpg") top left/cover no-repeat;
-          border-bottom-left-radius: 15px;
-          border-top-left-radius: 15px;
-          width: 100%;
-      }
+        .custom-img {
+            background: url("../Images/signuppic.jpg") top left/cover no-repeat;
+            border-bottom-left-radius: 15px;
+            border-top-left-radius: 15px;
+            width: 100%;
+        }
 
-      .custom-x {
-          color: #454140;
-          margin-left: 350px;
-          margin-top: 0px;
-      }
+        .custom-x {
+            color: #454140;
+            margin-left: 350px;
+            margin-top: 0px;
+        }
 
-      .login_btn {
-          width: auto;
-          background: #454140;
-      }
+        .login_btn {
+            width: auto;
+            background: #454140;
+        }
 
     </style>
 
 </head>
 <body>
-  <div class="container d-flex justify-content-center">
+<div class="container d-flex justify-content-center">
     <div class="custom-card">
         <div>
             <div class="card-heading">
-                <img class="custom-img" src="signUpPic.jpg" alt="signUpPic">
+                <img class="custom-img" src="../Images/signUpPic.jpg" alt="signUpPic">
             </div>
             <div class="card-body">
-                <a class="custom-x" href="index.html"><i class="fas fa-times"></i></a>
+                <a class="custom-x" href="/"><i class="fas fa-times"></i></a>
                 <form>
                     <div class="d-flex justify-content-center" style="margin-bottom: 30px">
                         <h1 class="align-items-center" style="color: white">Sign Up</h1>
@@ -77,7 +75,7 @@
                                placeholder="password">
                     </div>
                     <div class="d-flex justify-content-center mt-3 login_container">
-                        <a href="index.html">
+                        <a href="/">
                             <button type="button" name="button" class="btn login_btn" id="signUp" style="color: white">Sign Up</button>
                         </a>
                     </div>
@@ -85,6 +83,5 @@
             </div>
         </div>
     </div>
-  </div>
-</body>
-</html>
+</div>
+<%- include('footer') -%>

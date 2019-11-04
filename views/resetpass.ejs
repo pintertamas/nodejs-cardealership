@@ -1,6 +1,4 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <!DOCTYPE html>
 <html>
@@ -15,7 +13,7 @@
 
     <style>
         body {
-            background: url("resetPassBG.png") no-repeat center center fixed;
+            background: url("../Images/resetPassBG.png") no-repeat center center fixed;
             align-content: center;
         }
 
@@ -38,9 +36,10 @@
     <h1>Forgot your password?</h1>
     <label class="w-auto">Enter your email address to reset your password</label>
     <input type="text" name="resetPass" id="text" class="form-control input_user" placeholder="email">
-    <a href="index.html">
+    <a href="/">
         <button type="button" name="button" class="button btn btn-info" style="color: white">Reset Password</button>
     </a>
 </div>
 </body>
 </html>
+<%- include('footer') -%>
