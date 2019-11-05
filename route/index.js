@@ -28,15 +28,15 @@ module.exports = function (app) {
     	getUserMW(objRepo),
     	renderMW(objRepo, 'browse'));
 
+    app.use('/shop/:carid/buy',
+        authMW(objRepo),
+        getCarMW(objRepo),
+        buyCarMW(objRepo));
+
     app.get('/shop/:carid',
     	authMW(objRepo),
     	getCarMW(objRepo),
     	renderMW(objRepo, 'inspect'));
-
-    app.use('/shop/:carid/buy',
-    	authMW(objRepo),
-    	getCarMW(objRepo),
-    	buyCarMW(objRepo));
 
     app.get('/admin/carList',
     	authMW(objRepo),
@@ -52,13 +52,13 @@ module.exports = function (app) {
     	saveCarMW(objRepo),
     	renderMW(objRepo, 'add'));
 
-    app.get('admin/editCar/:carid',
+    app.get('/admin/editCar/:carid',
     	authMW(objRepo),
     	getCarMW(objRepo),
     	saveCarMW(objRepo),
     	renderMW(objRepo, 'edit'));
 
-    app.get('/admin/deleteCar/:carid',
+    app.get('/admin/delete/:carid',
     	authMW(objRepo),
     	getCarMW(objRepo),
     	delCarMW(objRepo));
