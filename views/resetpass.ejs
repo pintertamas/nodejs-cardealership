@@ -1,7 +1,7 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <title>Password Reset</title>
@@ -13,8 +13,9 @@
 
     <style>
         body {
-            background: url("../images/resetPassBG.png") no-repeat center center fixed;
+            background: lightgray;
             align-content: center;
+            width: 100%;
         }
 
         .reset-pass {
@@ -34,10 +35,13 @@
 <body>
 <div class="reset-pass justify-content-center">
     <h1>Forgot your password?</h1>
-    <label class="w-auto">Enter your email address to reset your password</label>
+    <label for="text" class="w-auto">Enter your email address to reset your password</label>
     <input type="text" name="resetPass" id="text" class="form-control input_user" placeholder="email">
     <a href="/">
         <button type="button" name="button" class="button btn btn-info" style="color: white">Reset Password</button>
+    </a>
+    <a href="/">
+        <button type="button" name="button" class="button btn btn-outline-secondary" style="color: white">Cancel</button>
     </a>
 </div>
 </body>
