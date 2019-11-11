@@ -6,6 +6,5 @@
         <language minSize="211" name="JavaScript" />
       </Languages>
     </inspection_tool>
-    <inspection_tool class="JSHint" enabled="true" level="ERROR" enabled_by_default="true" />
   </profile>
 </component>

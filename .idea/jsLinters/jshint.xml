@@ -50,7 +50,7 @@
     <option nomen="false" />
     <option nonbsp="false" />
     <option nonew="true" />
-    <option nonstandard="false" />
+    <option nonstandard="true" />
     <option notypeof="false" />
     <option noyield="false" />
     <option onevar="false" />

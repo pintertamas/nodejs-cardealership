@@ -1,6 +1,6 @@
 const authMW = require('../middleware/auth/authMW');
 const checkPassMW = require('../middleware/auth/checkPassMW');
-const logoutMW = require('../middleware/user/logoutMW');
+const logoutMW = require('../middleware/auth/logoutMW');
 const renderMW = require('../middleware/renderMW');
 const getUserMW = require('../middleware/user/getUserMW');
 const saveUserMW = require('../middleware/user/saveUserMW');
@@ -10,11 +10,17 @@ const saveCarMW = require('../middleware/car/saveCarMW');
 const delCarMW = require('../middleware/car/delCarMW');
 const buyCarMW = require('../middleware/car/buyCarMW');
 
+const UserModel = require('../models/user');
+const CarModel = require('../models/car');
+
 module.exports = function (app) {
-    const objRepo = {};
+    const objRepo = {
+    	UserModel: UserModel,
+		CarModel: CarModel
+	};
 
     app.get('/user/signup',
-    	getUserMW(objRepo),
+    	//getUserMW(objRepo),
     	saveUserMW(objRepo),
     	renderMW(objRepo, 'signup'));
 

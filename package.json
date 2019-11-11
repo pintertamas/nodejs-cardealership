@@ -18,8 +18,10 @@
   },
   "homepage": "https://gitlab.com/pTomi/javascript_homework#readme",
   "dependencies": {
+    "body-parser": "latest",
     "ejs": "^2.7.1",
     "express": "^4.17.1",
+    "mongoose": "latest",
     "require": "^2.4.20"
   },
   "devDependencies": {
