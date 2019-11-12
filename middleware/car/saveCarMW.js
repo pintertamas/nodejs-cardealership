@@ -47,7 +47,7 @@ module.exports = function(objectrepository) {
                 return next(err);
             }
 
-            return res.redirect(`/shop`);
+            return res.redirect('/shop');
         });
     };
 };
