@@ -13,7 +13,7 @@
 
     <style>
         body {
-            background: lightgray;
+            background: #000000;
             align-content: center;
             width: 100%;
         }
@@ -30,19 +30,33 @@
         .button {
             margin-top: 10px;
         }
+
+        .custom-card{
+            border-radius: 15px;
+            margin-left: 20%;
+            margin-right: 20%;
+            width: 60%;
+            height: 50%;
+            padding: 10%;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+        }
     </style>
 </head>
 <body>
 <div class="reset-pass justify-content-center">
+    <div class="card custom-card">
     <h1>Forgot your password?</h1>
     <label for="text" class="w-auto">Enter your email address to reset your password</label>
-    <input type="text" name="resetPass" id="text" class="form-control input_user" placeholder="email">
-    <a href="/">
-        <button type="button" name="button" class="button btn btn-info" style="color: white">Reset Password</button>
+    <input type="text" name="resetPass" id="text" class="form-control input_user w-auto" placeholder="email">
+    <a href="/" style="text-decoration: none">
+        <button type="button" name="button" class="button btn btn-info w-auto" style="color: white; display: inline">Reset Password</button>
     </a>
-    <a href="/">
-        <button type="button" name="button" class="button btn btn-outline-secondary" style="color: white">Cancel</button>
+    <a href="/" style="text-decoration: none">
+        <button type="button" name="button" class="button btn btn-outline-secondary w-auto" style="color: black; display: inline">Cancel</button>
     </a>
+    </div>
 </div>
 </body>
 </html>

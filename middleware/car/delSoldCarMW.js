@@ -1,6 +1,6 @@
 /**
  * Removes a car from the database, the entity used here is: res.locals.car
- * Redirects to /admin/soldCars after delete
+ * Redirects to /admin/sold after delete
  */
 const requireOption = require('../requireOption');
 
