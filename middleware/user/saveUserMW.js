@@ -50,36 +50,48 @@ module.exports = function (objectrepository) {
     return function (req, res, next) {
 
         //not enough parameter
-        if ((typeof req.body.email === 'undefined') || (typeof req.body.username === 'undefined') ||
-            (typeof req.body.password === 'undefined')) {
+        if (typeof req.body.email === 'undefined' ||
+            typeof req.body.username === 'undefined' ||
+            typeof req.body.password === 'undefined')
+        {
+            console.log("user is undefined");
             return next();
         }
 
         //lets find the user
         UserModel.findOne({
-            email: req.body.email
+            username: req.body.username
         }, function (err, result) {
 
             if ((err) || (result !== null)) {
-                res.locals.error.push('Your email address is already registered!');
+                console.log("This username is taken...");
+                res.locals.error.push('This username is taken...');
                 return next();
             }
 
             if (req.body.name.length < 4) {
+                console.log("Wrong username...");
                 res.locals.error.push('The username should be at least 4 characters!');
                 return next();
             }
 
             //create user
             let newUser = new UserModel();
-            newUser.name = req.body.name;
             newUser.email = req.body.email;
+            console.log(req.body.email);
+            newUser.name = req.body.name;
             newUser.password = req.body.password;
+            res.send(newUser);
+            console.log("Created new user");
             newUser.save((err)=>{
-                console.log(err);
+                if (err) {
+                    console.log(err);
+                    return next(err);
+                }
                 //redirect to /
                 return res.redirect('/');
             });
+
         });
     };
 };
