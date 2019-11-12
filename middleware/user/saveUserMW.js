@@ -50,48 +50,35 @@ module.exports = function (objectrepository) {
     return function (req, res, next) {
 
         //not enough parameter
-        if (typeof req.body.email === 'undefined' ||
-            typeof req.body.username === 'undefined' ||
-            typeof req.body.password === 'undefined')
-        {
-            console.log("user is undefined");
+        if ((typeof req.body === 'undefined') || (typeof req.body.email === 'undefined') ||
+            (typeof req.body.password === 'undefined')) {
             return next();
         }
 
         //lets find the user
         UserModel.findOne({
-            username: req.body.username
+            email: req.body.email
         }, function (err, result) {
 
             if ((err) || (result !== null)) {
-                console.log("This username is taken...");
-                res.locals.error.push('This username is taken...');
+                res.locals.error.push('Your email address is already registered!');
                 return next();
             }
 
-            if (req.body.name.length < 4) {
-                console.log("Wrong username...");
-                res.locals.error.push('The username should be at least 4 characters!');
+            if (req.body.name.length < 3) {
+                res.locals.error.push('The username should be at least 3 characters!');
                 return next();
             }
 
             //create user
-            let newUser = new UserModel();
-            newUser.email = req.body.email;
-            console.log(req.body.email);
+            const newUser = new UserModel();
             newUser.name = req.body.name;
+            newUser.email = req.body.email;
             newUser.password = req.body.password;
-            res.send(newUser);
-            console.log("Created new user");
-            newUser.save((err)=>{
-                if (err) {
-                    console.log(err);
-                    return next(err);
-                }
-                //redirect to /
-                return res.redirect('/');
+            newUser.save(function (err) {
+                //redirect to /login
+                return res.redirect('/login');
             });
-
         });
     };
 };

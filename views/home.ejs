@@ -1,5 +1,5 @@
 <%- include('homeHeader') -%>
-<h1 align="center" class="display-4 font-weight-bold" style="color: white; margin-top: 1%; margin-bottom: 5%">
+<h1 align="center" class="display-3" style="color: white; margin-top: 2%; margin-bottom: 5%; width: 100%; height: 5%">
     <img alt="" style="border-radius: 100px"  width="100" height="100" src="/images/logo.jpg">
     My Awesome Car Dealership
 </h1>
@@ -9,7 +9,7 @@
             <div class="d-flex justify-content-center">
             </div>
             <div class="d-flex justify-content-center form_container">
-                <form method="POST">
+                <form method="post">
                     <div class="d-flex justify-content-center" style="margin-bottom: 30px">
                         <h1 class="align-items-center" style="color: white">Login</h1>
                     </div>
@@ -24,7 +24,7 @@
                         <div class="input-group-append">
                             <span class="input-group-text"><i class="fas fa-key"></i></span>
                         </div>
-                        <input type="password" name="userPassword" id="password" class="form-control input_pass"
+                        <input type="password" name="password" id="password" class="form-control input_pass"
                                placeholder="password">
                     </div>
                 </form>
@@ -49,7 +49,7 @@
             <div class="input-group-append h-auto w-auto">
                 <span class="input-group-text"><i class="fas fa-user-cog"></i></span>
             </div>
-            <input type="password" name="adminPassword" class="form-control input_pass" value="" placeholder="admin">
+            <input type="password" name="adminPassword" class="form-control input_pass" value="" placeholder="ez innen ki lesz véve">
             <a href="/admin/carList">
                 <button type="button" name="button" class="btn login_btn_admin" style="color: white">Login</button>
             </a>

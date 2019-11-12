@@ -1,23 +1,10 @@
-/*
-const UserModel = require('./models/user');
-
-let egyuser = new UserModel();
-egyuser.email = "imel";
-egyuser.username = "Gezuka";
-egyuser.password = "lyelszo";
-egyuser.save((err)=>{
-    console.log(err);
-});
-
-*/
-
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const session = require('express-session');
 
 app.set('view engine', 'ejs');
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(express.static('static'));

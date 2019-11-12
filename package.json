@@ -11,7 +11,7 @@
     "url": "git+https://gitlab.com/pTomi/javascript_homework.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Pinter Tamas",
   "license": "ISC",
   "bugs": {
     "url": "https://gitlab.com/pTomi/javascript_homework/issues"
@@ -21,10 +21,9 @@
     "body-parser": "latest",
     "ejs": "^2.7.1",
     "express": "^4.17.1",
+    "express-session": "^1.17.0",
     "mongoose": "latest",
     "require": "^2.4.20"
   },
-  "devDependencies": {
-    "express-session": "^1.17.0"
-  }
+  "devDependencies": {}
 }

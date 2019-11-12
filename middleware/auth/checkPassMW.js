@@ -10,17 +10,20 @@ module.exports = function (objectrepository) {
 
     return function (req, res, next) {
 
+        //not enough parameter
+        if ((typeof req.body.email === 'undefined') ||
+            (typeof req.body.username === 'undefined') ||
+            (typeof req.body.password === 'undefined'))
+        {
+            console.log("User undefined");
+            return next();
+        }
+
         //check whether the user is the admin
         if ((req.body.email === 'admin') && (req.body.password === 'admin')) {
             console.log("Yap, it's the admin");
             req.session.loggedIn = true;
             return req.session.save(err => res.redirect('/admin/carlist'));
-        }
-
-        //not enough parameter
-        if ((typeof req.body === 'undefined') || (typeof req.body.email === 'undefined') ||
-            (typeof req.body.password === 'undefined')) {
-            return next();
         }
 
         //lets find the user
@@ -43,6 +46,7 @@ module.exports = function (objectrepository) {
             }
 
             //login is ok, save id to session
+            console.log("Created session");
             req.session.userid = result._id;
             req.session.loggedIn = true;
 
