@@ -5,17 +5,19 @@ const session = require('express-session');
 
 app.set('view engine', 'ejs');
 
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 app.use(express.static('static'));
 app.use(express.static('public'));
 
-app.use(
-    session({
-        secret: 'secret'
-    })
-);
+app.use(session({
+    secret: "cookie_secret",
+    name: "cookie",
+    proxy: true,
+    resave: true,
+    saveUninitialized: true
+}));
 
 // Load routing
 require('./route/index')(app);
