@@ -4,9 +4,8 @@
  *    - /user/login when not signed in
  *    - /shop when signed in
  */
-module.exports = function (objectrepository) {
-
-    return function (req, res, next) {
+module.exports = function () {
+    return function (req, res) {
 
         if (typeof req.session.userid === 'undefined') {
             return res.redirect('/user/login');
@@ -14,5 +13,4 @@ module.exports = function (objectrepository) {
             return res.redirect('/shop');
         }
     };
-
 };

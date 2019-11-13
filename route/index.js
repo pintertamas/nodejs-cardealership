@@ -83,5 +83,5 @@ module.exports = function (app) {
 	);
 
     app.use('/',
-        mainRedirectMW(objRepo));
+        mainRedirectMW());
 };
