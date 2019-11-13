@@ -38,7 +38,7 @@ module.exports = function (app) {
         renderMW(objRepo, 'resetpass'));
 
     app.get('/shop',
-    	authMW(objRepo),
+    	//authMW(objRepo),
     	checkPassMW(objRepo),
     	getUserMW(objRepo),
     	renderMW(objRepo, 'browse'));
@@ -54,15 +54,15 @@ module.exports = function (app) {
     	renderMW(objRepo, 'inspect'));
 
     app.get('/admin/carList',
-    	authMW(objRepo),
+    	//authMW(objRepo),
     	renderMW(objRepo, 'carlist'));
 
     app.get('/admin/soldCars',
-		authMW(objRepo),
+		//authMW(objRepo),
 		renderMW(objRepo, 'sold'));
 
     app.use('/admin/addCar',
-    	authMW(objRepo),
+    	//authMW(objRepo),
     	getCarMW(objRepo),
     	saveCarMW(objRepo),
     	renderMW(objRepo, 'add'));

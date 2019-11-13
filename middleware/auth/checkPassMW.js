@@ -15,7 +15,7 @@ module.exports = function (objectrepository) {
             (typeof req.body.username === 'undefined') ||
             (typeof req.body.password === 'undefined'))
         {
-            console.log("User undefined");
+            console.log("User undefined in checkPassMW");
             return next();
         }
 

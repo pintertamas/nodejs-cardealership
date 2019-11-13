@@ -31,6 +31,16 @@
             margin-top: 10px;
         }
 
+        .login_btn {
+            width: 100%;
+            background: #3c3c3c;
+        }
+
+        .login_btn:focus {
+            box-shadow: none;
+            outline: 0;
+        }
+
         .custom-card{
             border-radius: 15px;
             margin-left: 20%;
@@ -51,10 +61,10 @@
     <label for="text" class="w-auto">Enter your email address to reset your password</label>
     <input type="text" name="resetPass" id="text" class="form-control input_user w-auto" placeholder="email">
     <a href="/" style="text-decoration: none">
-        <button type="button" name="button" class="button btn btn-info w-auto" style="color: white; display: inline">Reset Password</button>
+        <button type="button" name="button" class="btn-group button btn btn-dark login_btn d-inline w-auto" id="reset" style="color: white; display: inline">Reset Password</button>
     </a>
     <a href="/" style="text-decoration: none">
-        <button type="button" name="button" class="button btn btn-outline-secondary w-auto" style="color: black; display: inline">Cancel</button>
+        <button type="button" name="button" class="btn-group button btn btn-outline-secondary d-inline w-auto" style="color: black; display: inline">Cancel</button>
     </a>
     </div>
 </div>
