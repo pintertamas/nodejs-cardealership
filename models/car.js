@@ -7,10 +7,6 @@ const Car = db.model('Car', {
     mileage: Number,
     price: Number,
     description: String,
-    owner: {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    }
 });
 
 module.exports = Car;

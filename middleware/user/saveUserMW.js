@@ -6,49 +6,33 @@
 
 const requireOption = require('../requireOption');
 
-/**
- * Check if the email address is already registered, if not
- * create the user (no extra checks on password)
- */
-
 module.exports = function (objectrepository) {
 
     const UserModel = requireOption(objectrepository, 'UserModel');
 
     return function (req, res, next) {
-
         //not enough parameter
-        if ((typeof req.body === 'undefined') || (typeof req.body.email === 'undefined') ||
+        if ((typeof req.body.email === 'undefined') ||
+            (typeof req.body.username === 'undefined') ||
             (typeof req.body.password === 'undefined')) {
+            console.log("User is undefined");
             return next();
         }
 
-        //lets find the user
-        UserModel.findOne({
-            email: req.body.email
-        }, function (err, result) {
+        if (typeof res.locals.user === 'undefined') {
+            res.locals.user = new UserModel();
+        }
 
-            if ((err) || (result !== null)) {
-                res.locals.error.push('Your email address is already registered!');
-                return next();
+        res.locals.user.email = req.body.email;
+        res.locals.user.username = req.body.username;
+        res.locals.user.password = req.body.password;
+
+        res.locals.user.save((err) => {
+            if (err) {
+                return next(err);
             }
 
-            if (req.body.name.length < 3) {
-                res.locals.error.push('The username should be at least 3 characters!');
-                return next();
-            }
-
-            //create user
-            console.log("Creating new user");
-            const newUser = new UserModel();
-            newUser.name = req.body.name;
-            newUser.email = req.body.email;
-            newUser.password = req.body.password;
-            newUser.save(function (err) {
-                //redirect to /login
-                console.log("Redirecting to /user/login");
-                return res.redirect('/user/login');
-            });
+            return res.redirect('/');
         });
     };
 };

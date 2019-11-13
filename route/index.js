@@ -1,12 +1,12 @@
 const authMW = require('../middleware/auth/authMW');
 const inverseAuthMW = require('../middleware/auth/inverseAuthMW');
+const mainRedirectMW = require('../middleware/auth/mainRedirectMW');
 const checkPassMW = require('../middleware/auth/checkPassMW');
-const loginMW = require('../middleware/auth/loginMW');
+const checkUserLoginMW = require('../middleware/user/checkUserLoginMW');
+const checkUserRegistrationMW = require('../middleware/user/checkUserRegistrationMW');
 const logoutMW = require('../middleware/auth/logoutMW');
-const registerMW = require('../middleware/auth/registerMW');
 const renderMW = require('../middleware/renderMW');
 const getUserMW = require('../middleware/user/getUserMW');
-const saveUserMW = require('../middleware/user/saveUserMW');
 const resetPassMW = require('../middleware/user/resetPassMW');
 const getCarMW = require('../middleware/car/getCarMW');
 const saveCarMW = require('../middleware/car/saveCarMW');
@@ -22,19 +22,15 @@ module.exports = function (app) {
 		CarModel: CarModel
 	};
 
-    app.get('/user/signup',
-		inverseAuthMW(objRepo),
+    app.get('/user/register',
+    	inverseAuthMW(objRepo),
+		checkUserRegistrationMW(objRepo),
     	renderMW(objRepo, 'signup'));
 
-	app.use('/user/register',
-		inverseAuthMW(objRepo),
-		saveUserMW(objRepo),
-		registerMW(objRepo));
-
 	app.use('/user/login',
-		authMW(objRepo),
-		checkPassMW(objRepo),
-    	loginMW(objRepo));
+		inverseAuthMW(objRepo),
+		checkUserLoginMW(objRepo),
+    	renderMW(objRepo, 'home'));
 
     app.get('/user/resetpass',
         getUserMW(objRepo),
@@ -87,5 +83,5 @@ module.exports = function (app) {
 	);
 
     app.use('/',
-        renderMW(objRepo, 'home'));
+        mainRedirectMW(objRepo));
 };
