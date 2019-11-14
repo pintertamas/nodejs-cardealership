@@ -7,6 +7,7 @@ const Car = db.model('Car', {
     mileage: Number,
     price: Number,
     description: String,
+    sold: Boolean,
 });
 
 module.exports = Car;

@@ -11,7 +11,7 @@ module.exports = function (objectrepository) {
     return function (req, res, next) {
 
         //not enough parameter
-        if ((typeof req.body === 'undefined') ||
+        if ((typeof req.body.name === 'undefined') ||
             (typeof req.body.email === 'undefined') ||
             (typeof req.body.password === 'undefined')) {
             console.log("User is undefined in checkUserRegistrationMW");
@@ -28,8 +28,8 @@ module.exports = function (objectrepository) {
                 return next();
             }
 
-            if (req.body.name.length < 3) {
-                res.locals.error.push('The username should be at least 3 characters!');
+            if (req.body.name.length < 4) {
+                res.locals.error.push('The username should be at least 4 characters!');
                 return next();
             }
 
