@@ -11,35 +11,45 @@ module.exports = function (objectrepository) {
 
     return function (req, res, next) {
 
+        //check if the user is the admin
+        if (req.body.name === "admin" && req.body.password === "admin") {
+            console.log("The admin's here");
+            req.session.loggedIn = true;
+            req.session.admin = true;
+            return res.redirect('/admin/carlist');
+        }
+
         //not enough parameter
-        if ((typeof req.body === 'undefined') ||
-            (typeof req.body.email === 'undefined') ||
+        if ((typeof req.body.name === 'undefined') ||
             (typeof req.body.password === 'undefined')) {
-            console.log("User is undefined in checkUserLoginMW");
+            console.log("checkUserLoginMW - body: " + req.body);
             return next();
         }
 
         //lets find the user
         UserModel.findOne({
-            email: req.body.email
+            name: req.body.name
         }, function (err, result) {
             if ((err) || (!result)) {
-                res.locals.error.push('Your email address is not registered!');
+                res.locals.error = 'Your name is not registered!';
+                console.log("Your name is not registered!");
                 return next();
             }
 
             //check password
             if (result.password !== req.body.password) {
-                res.locals.error.push('Wrong password!');
+                res.locals.error = 'Wrong password!';
+                console.log("Wrong password!");
                 return next();
             }
 
             //login is ok, save id to session
             console.log("login is ok, saving session");
-            req.session.userid = result._id;
+            req.session.loggedIn = result._id;
+            req.session.adin = false;
 
             //redirect to / so the app can decide where to go next
-            return res.redirect('/');
+            return res.redirect('/shop');
         });
     };
 };

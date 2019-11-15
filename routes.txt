@@ -14,7 +14,7 @@ Routing
 renderMW
 
 middleware/auth/
-	checkPassMW.js
+	checkAdminMW.js
 	authMW.js
 
 middleware/user/

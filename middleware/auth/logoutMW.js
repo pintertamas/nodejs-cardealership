@@ -5,6 +5,8 @@ const requireOption = require('../requireOption');
 
 module.exports = function(objectrepository) {
     return function(req, res, next) {
+        delete req.session.loggedIn;
+        delete req.session.admin;
         req.session.destroy(err => {
             console.log("logging off...");
             res.redirect('/');

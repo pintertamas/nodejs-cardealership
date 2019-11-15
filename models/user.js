@@ -3,7 +3,7 @@ const db = require('../config/db');
 
 const User = db.model('User', {
     email: String,
-    username: String,
+    name: String,
     password: String,
 });
 

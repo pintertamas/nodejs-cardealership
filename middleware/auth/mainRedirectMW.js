@@ -7,10 +7,18 @@
 module.exports = function () {
     return function (req, res) {
 
-        if (typeof req.session.userid === 'undefined') {
+        if (typeof req.session.loggedIn === 'undefined') {
+            console.log("session id:" + req.session.loggedIn);
             return res.redirect('/user/login');
         } else {
-            return res.redirect('/shop');
+            if (req.session.admin === true) {
+                console.log("session id:" + req.session.loggedIn);
+                return res.redirect('/admin/carlist');
+            }
+            if (req.session.admin === false) {
+                console.log("session id:" + req.session.loggedIn);
+                return res.redirect('/shop');
+            }
         }
     };
 };

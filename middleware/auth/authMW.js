@@ -5,11 +5,11 @@ const requireOption = require('../requireOption');
 
 module.exports = function(objectrepository) {
     return function(req, res, next) {
-        if (typeof req.session.loggedIn === 'undefined' || req.session.loggedIn !== true) {
-            console.log("auth failed -> /");
+        if (typeof req.session.loggedIn === 'undefined') {
+            console.log("auth failed -> / " + req.session.loggedIn);
             return res.redirect('/');
         }
-        console.log("auth passed");
+        console.log("auth passed -> next()");
         next();
     };
 };
