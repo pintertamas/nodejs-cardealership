@@ -1,6 +1,6 @@
 /**
- * Load a car from the database using the :carid param
- * The result is saved to res.locals.car
+ *load all cars from the db
+ * the result is saved to res.locals.cars
  */
 const requireOption = require('../requireOption');
 
@@ -8,12 +8,12 @@ module.exports = function(objectrepository) {
     const CarModel = requireOption(objectrepository, 'CarModel');
 
     return function(req, res, next) {
-        CarModel.findOne({ _id: req.params.carid }, (err, car) => {
-            if (err || !car) {
+        CarModel.find({sold: false}, (err, cars) => {
+            if (err) {
                 return next(err);
             }
 
-            res.locals.car = car;
+            res.locals.cars = cars;
             return next();
         });
     };

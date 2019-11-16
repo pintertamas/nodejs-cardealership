@@ -16,6 +16,8 @@ module.exports = function(objectrepository) {
             typeof req.body.price === 'undefined' ||
             typeof res.locals.description === 'undefined'
         ) {
+            console.log("Car is undefined");
+            res.locals.error = "Fill all the details";
             return next();
         }
 
@@ -24,30 +26,36 @@ module.exports = function(objectrepository) {
         }
 
         if (Number.isNaN(parseInt(req.body.year, 10))) {
+            res.locals.error = "\'Year\' must be formatted to integer!";
             return next(new Error('\'Year\' must be formatted to integer!'));
         }
 
         if (Number.isNaN(parseInt(req.body.mileage, 10))) {
+            res.locals.error = "\'Mileage\' must be formatted to integer!";
             return next(new Error('\'Mileage\' must be formatted to integer!'));
         }
 
         if (Number.isNaN(parseInt(req.body.price, 10))) {
+            res.locals.error = "\'Price\' must be formatted to integer!";
             return next(new Error('\'Price\' must be formatted to integer!'));
         }
+
+        console.log("Creating car");
 
         res.locals.car.brand = req.body.brand;
         res.locals.car.year = parseInt(req.body.year, 10);
         res.locals.car.mileage = parseInt(req.body.mileage, 10);
         res.locals.car.price = parseInt(req.body.price, 10);
         res.locals.car.description = req.body.description;
-        res.locals.car.owner = res.locals.user._id;
+        res.locals.car.sold = false;
 
         res.locals.car.save(err => {
             if (err) {
+                console.log(err);
                 return next(err);
             }
 
-            return res.redirect('/shop');
+            return res.redirect('/admin/carlist');
         });
     };
 };

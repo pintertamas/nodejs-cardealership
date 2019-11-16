@@ -1,19 +1,18 @@
 /**
- * Load a car from the database using the :carid param
- * The result is saved to res.locals.car
+ * get all the sold cars from the db (a car is sold if the sold param is true)
  */
 const requireOption = require('../requireOption');
 
 module.exports = function(objectrepository) {
     const CarModel = requireOption(objectrepository, 'CarModel');
-
     return function(req, res, next) {
-        CarModel.findOne({ _id: req.params.carid }, (err, car) => {
-            if (err || !car) {
+        // maaaagic....
+        CarModel.find({ sold: true }, (err, soldcars) => {
+            if (err || !soldcars) {
                 return next(err);
             }
 
-            res.locals.car = car;
+            res.locals.soldcars = soldcars;
             return next();
         });
     };

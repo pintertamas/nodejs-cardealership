@@ -20,7 +20,7 @@
 <table class="table table-hover table-dark">
     <thead>
     <tr>
-        <th scope="col">#</th>
+        <th scope="col">Car ID</th>
         <th scope="col">Buyer</th>
         <th scope="col">Model</th>
         <th scope="col">Mileage (km)</th>
@@ -29,42 +29,30 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <th scope="row">1</th>
-        <td>Minta Peter</td>
-        <td>Ferrari 458</td>
-        <td>0</td>
-        <td>349900</td>
-        <td>
-            <a>
-                <button class="button btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <th scope="row">2</th>
-        <td>Pelda Janos</td>
-        <td>Tesla Model X</td>
-        <td>2345</td>
-        <td>50000</td>
-        <td>
-            <a>
-                <button class="button btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <th scope="row">3</th>
-        <td>Pityuka2008</td>
-        <td>Mercedes-AMG GT C Roadster</td>
-        <td>3455</td>
-        <td>200000</td>
-        <td>
-            <a>
-                <button class="button btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
-            </a>
-        </td>
-    </tr>
+    <% soldcars.forEach(function(soldCar) { %>
+        <tr>
+            <td>
+                <%= soldCar._id %>
+            </td>
+            <td>
+                <%= soldCar._owner %>
+            </td>
+            <td>
+                <%= soldCar.brand %>
+            </td>
+            <td>
+                <%= soldCar.mileage %>
+            </td>
+            <td>
+                <%= soldCar.price %>
+            </td>
+            <td>
+                <a href="/admin/delete/<%= soldCar._id %>">
+                    <button class="button btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
+                </a>
+            </td>
+        </tr>
+    <% }); %>
     </tbody>
 </table>
 <%- include('footer') -%>

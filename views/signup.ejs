@@ -16,7 +16,9 @@
                                 <h1 class="align-items-center" style="color: white">Sign Up</h1>
                             </div>
                             <hr>
-
+                            <% if (typeof(error) !== 'undefined') { %>
+                            <div class="alert alert-danger"><%= error %></div>
+                            <% } %>
                             <div class="input-group mb-3">
                                 <div class="input-group-append">
                                     <span class="input-group-text"><i class="fas fa-user"></i></span>

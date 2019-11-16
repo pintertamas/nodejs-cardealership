@@ -31,11 +31,15 @@ module.exports = function (objectrepository) {
 
             if ((err) || (result !== null)) {
                 //res.locals.error.push('This username has already been registered!');
+                console.log("This username is already in use");
+                res.locals.error = "This username is already in use";
                 return next();
             }
 
             if (req.body.name.length < 4) {
                 //res.locals.error.push('The name should be at least 4 characters!');
+                console.log("The name should be at least 4 characters!");
+                res.locals.error = "The name should be at least 4 characters long!";
                 return next();
             }
 
@@ -47,8 +51,10 @@ module.exports = function (objectrepository) {
             newUser.save(function (err) {
                 //redirect to /login
                 console.log("User created with this name: " + newUser.name);
-                console.log("Redirecting to /");
-                return res.redirect('/');
+                console.log("Redirecting to /shop, creating session");
+                req.session.loggedIn = newUser._id;
+                req.session.admin = false;
+                return res.redirect('/shop');
             });
         });
     };

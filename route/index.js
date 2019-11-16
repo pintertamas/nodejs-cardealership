@@ -10,6 +10,8 @@ const renderMW = require('../middleware/renderMW');
 const getUserMW = require('../middleware/user/getUserMW');
 const resetPassMW = require('../middleware/user/resetPassMW');
 const getCarMW = require('../middleware/car/getCarMW');
+const getCarsMW = require('../middleware/car/getCarsMW');
+const getSoldCarsMW = require('../middleware/car/getSoldCarsMW');
 const saveCarMW = require('../middleware/car/saveCarMW');
 const delCarMW = require('../middleware/car/delCarMW');
 const buyCarMW = require('../middleware/car/buyCarMW');
@@ -38,30 +40,32 @@ module.exports = function (app) {
 
     app.get('/shop',
 		authMW(objRepo),
-		//inverseAuthMW(objRepo),
 		checkUserMW(objRepo),
 		getUserMW(objRepo),
     	renderMW(objRepo, 'browse'));
 
     app.use('/shop/:carid/buy',
         authMW(objRepo),
+        checkUserMW(objRepo),
         getCarMW(objRepo),
         buyCarMW(objRepo));
 
     app.get('/shop/:carid',
-    	//authMW(objRepo),
+    	authMW(objRepo),
+    	checkUserMW(objRepo),
     	getCarMW(objRepo),
     	renderMW(objRepo, 'inspect'));
 
     app.get('/admin/carList',
 		authMW(objRepo),
-		//inverseAuthMW(objRepo),
 		checkAdminMW(objRepo),
+    	getCarsMW(objRepo),
     	renderMW(objRepo, 'carlist'));
 
     app.get('/admin/soldCars',
 		authMW(objRepo),
 		checkAdminMW(objRepo),
+		getSoldCarsMW(objRepo),
 		renderMW(objRepo, 'sold'));
 
     app.use('/admin/addCar',
@@ -73,13 +77,15 @@ module.exports = function (app) {
 
     app.use('/admin/editCar/:carid',
     	authMW(objRepo),
+    	checkAdminMW(objRepo),
     	getCarMW(objRepo),
     	saveCarMW(objRepo),
     	renderMW(objRepo, 'edit'));
 
     app.get('/admin/delete/:carid',
     	authMW(objRepo),
-    	getCarMW(objRepo),
+    	checkAdminMW(objRepo),
+    	getSoldCarsMW(objRepo),
     	delCarMW(objRepo));
 
 	app.get('/logout',
