@@ -4,7 +4,7 @@
 module.exports = function (objectrepository) {
 
     return function (req, res, next) {
-        if (typeof req.session.loggedIn !== 'undefined') {
+        if (typeof req.session.loggedIn !== 'undefined' && req.session.loggedIn === req.sessionID) {
             if (req.session.admin === true) {
                 return res.redirect('/admin/carlist');
             }

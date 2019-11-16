@@ -1,22 +1,23 @@
+const requireOption = require('../requireOption');
+
 /**
  * Using POST params update or save a car to the database
  * If res.locals.car is there, it's an update otherwise this middleware creates an entity
  * Redirects to /admin/CarList after success
  */
-const requireOption = require('../requireOption');
 
 module.exports = function(objectrepository) {
+
     const CarModel = requireOption(objectrepository, 'CarModel');
 
     return function(req, res, next) {
-        if (
-            typeof req.body.brand === 'undefined' ||
-            typeof req.body.year === 'undefined' ||
-            typeof req.body.mileage === 'undefined' ||
-            typeof req.body.price === 'undefined' ||
-            typeof res.locals.description === 'undefined'
-        ) {
-            console.log("Car is undefined");
+        if ((typeof req.body === 'undefined') //||
+            /*(typeof req.body.brand === 'undefined') ||
+            (typeof req.body.year === 'undefined') ||
+            (typeof req.body.mileage === 'undefined') ||
+            (typeof req.body.price === 'undefined') ||
+            (typeof res.locals.description === 'undefined')*/) {
+            console.log("Car is undefined " + req.body.brand);
             res.locals.error = "Fill all the details";
             return next();
         }
@@ -27,35 +28,37 @@ module.exports = function(objectrepository) {
 
         if (Number.isNaN(parseInt(req.body.year, 10))) {
             res.locals.error = "\'Year\' must be formatted to integer!";
-            return next(new Error('\'Year\' must be formatted to integer!'));
+            //return next(new Error('\'Year\' must be formatted to integer!'));
+            return next();
         }
 
         if (Number.isNaN(parseInt(req.body.mileage, 10))) {
             res.locals.error = "\'Mileage\' must be formatted to integer!";
-            return next(new Error('\'Mileage\' must be formatted to integer!'));
+            //return next(new Error('\'Mileage\' must be formatted to integer!'));
+            return next();
         }
 
         if (Number.isNaN(parseInt(req.body.price, 10))) {
             res.locals.error = "\'Price\' must be formatted to integer!";
-            return next(new Error('\'Price\' must be formatted to integer!'));
+            //return next(new Error('\'Price\' must be formatted to integer!'));
+            return next();
         }
 
         console.log("Creating car");
 
-        res.locals.car.brand = req.body.brand;
-        res.locals.car.year = parseInt(req.body.year, 10);
-        res.locals.car.mileage = parseInt(req.body.mileage, 10);
-        res.locals.car.price = parseInt(req.body.price, 10);
-        res.locals.car.description = req.body.description;
-        res.locals.car.sold = false;
+        const newCar = new CarModel();
+        newCar.brand = req.body.brand;
+        newCar.year = parseInt(req.body.year, 10);
+        newCar.mileage = parseInt(req.body.mileage, 10);
+        newCar.price = parseInt(req.body.price, 10);
+        newCar.description = req.body.description;
+        newCar.sold = false;
 
-        res.locals.car.save(err => {
-            if (err) {
-                console.log(err);
-                return next(err);
-            }
-
+        newCar.save(function (err) {
+            //redirect to /login
+            console.log("Car created with this name: " + newCar.brand);
             return res.redirect('/admin/carlist');
+
         });
     };
 };

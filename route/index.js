@@ -56,19 +56,19 @@ module.exports = function (app) {
     	getCarMW(objRepo),
     	renderMW(objRepo, 'inspect'));
 
-    app.get('/admin/carList',
+    app.get('/admin/carlist',
 		authMW(objRepo),
 		checkAdminMW(objRepo),
     	getCarsMW(objRepo),
     	renderMW(objRepo, 'carlist'));
 
-    app.get('/admin/soldCars',
+    app.get('/admin/soldcars',
 		authMW(objRepo),
 		checkAdminMW(objRepo),
 		getSoldCarsMW(objRepo),
 		renderMW(objRepo, 'sold'));
 
-    app.use('/admin/addCar',
+    app.use('/admin/addcar',
     	authMW(objRepo),
     	checkAdminMW(objRepo),
     	getCarMW(objRepo),
@@ -85,7 +85,7 @@ module.exports = function (app) {
     app.get('/admin/delete/:carid',
     	authMW(objRepo),
     	checkAdminMW(objRepo),
-    	getSoldCarsMW(objRepo),
+    	getCarMW(objRepo),
     	delCarMW(objRepo));
 
 	app.get('/logout',
