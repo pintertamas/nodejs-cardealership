@@ -55,19 +55,21 @@
     </style>
 </head>
 <body>
+<form>
 <div class="reset-pass justify-content-center">
     <div class="card custom-card">
     <h1>Forgot your password?</h1>
-    <label for="text" class="w-auto">Enter your email address to reset your password</label>
-    <input type="text" name="resetPass" id="text" class="form-control input_user w-auto" placeholder="email">
-    <a href="/" style="text-decoration: none">
-        <button type="button" name="button" class="btn-group button btn btn-dark login_btn d-inline w-auto" id="reset" style="color: white; display: inline">Reset Password</button>
-    </a>
-    <a href="/" style="text-decoration: none">
-        <button type="button" name="button" class="btn-group button btn btn-outline-secondary d-inline w-auto" style="color: black; display: inline">Cancel</button>
-    </a>
+
+        <label for="email" class="w-auto">Enter your email address to reset your password</label>
+        <input type="text" name="email" id="email" class="form-control input_user w-auto" placeholder="email">
+        <input type="submit"  value="Reset Password" name="button" class="btn-group button btn btn-dark login_btn d-inline w-auto" id="reset" style="color: white; text-decoration: none; display: inline">
+
+        <a href="/" style="text-decoration: none">
+            <button type="button" name="button" class="btn-group button btn btn-outline-secondary d-inline w-auto" style="color: black; display: inline">Cancel</button>
+        </a>
     </div>
 </div>
+</form>
 </body>
 </html>
 <%- include('footer') -%>

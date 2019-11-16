@@ -1,0 +1,100 @@
+<%- include('headerAdmin') -%>
+<%- include('menuAdmin') -%>
+<table class="table table-hover table-dark table-sm">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Model</th>
+        <th scope="col">Mileage (km)</th>
+        <th scope="col">Price (€)</th>
+        <th scope="col">Options</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row">1</th>
+        <td>Tesla Model X</td>
+        <td>4356</td>
+        <td>200000</td>
+        <td>
+            <a href="/admin/editCar/:carid" style="text-decoration: none">
+                <button class="button btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+            </a>
+            <a>
+                <button class="button btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <th scope="row">2</th>
+        <td>Lamborghini Aventador</td>
+        <td>23434</td>
+        <td>150000</td>
+        <td>
+            <a href="/admin/editCar/:carid" style="text-decoration: none">
+                <button class="button btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+            </a>
+            <a>
+                <button class="button btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <th scope="row">3</th>
+        <td>Ferrari 458</td>
+        <td>0</td>
+        <td>349900</td>
+        <td>
+            <a href="/admin/editCar/:carid" style="text-decoration: none">
+                <button class="button btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+            </a>
+            <a>
+                <button class="button btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <th scope="row">4</th>
+        <td>Tesla Model 3</td>
+        <td>2345</td>
+        <td>50000</td>
+        <td>
+            <a href="/admin/editCar/:carid" style="text-decoration: none">
+                <button class="button btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+            </a>
+            <a>
+                <button class="button btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <th scope="row">5</th>
+        <td>Porsche 911</td>
+        <td>34566</td>
+        <td>120000</td>
+        <td>
+            <a href="/admin/editCar/:carid" style="text-decoration: none">
+                <button class="button btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+            </a>
+            <a>
+                <button class="button btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <th scope="row">6</th>
+        <td>Mercedes-AMG GT C Roadster</td>
+        <td>3455</td>
+        <td>200000</td>
+        <td>
+            <a href="/admin/editCar/:carid" style="text-decoration: none">
+                <button class="button btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+            </a>
+            <a>
+                <button class="button btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<%- include('footer') -%>

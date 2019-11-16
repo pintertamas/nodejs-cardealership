@@ -33,7 +33,6 @@ module.exports = function (app) {
     	renderMW(objRepo, 'home'));
 
     app.get('/user/resetpass',
-        getUserMW(objRepo),
         resetPassMW(objRepo),
         renderMW(objRepo, 'resetpass'));
 
