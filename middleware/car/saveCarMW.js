@@ -11,12 +11,12 @@ module.exports = function(objectrepository) {
     const CarModel = requireOption(objectrepository, 'CarModel');
 
     return function(req, res, next) {
-        if ((typeof req.body === 'undefined') //||
-            /*(typeof req.body.brand === 'undefined') ||
+        if ((typeof req.body === 'undefined') ||
+            (typeof req.body.brand === 'undefined') ||
             (typeof req.body.year === 'undefined') ||
             (typeof req.body.mileage === 'undefined') ||
             (typeof req.body.price === 'undefined') ||
-            (typeof res.locals.description === 'undefined')*/) {
+            (typeof res.locals.description === 'undefined')) {
             console.log("Car is undefined " + req.body.brand);
             res.locals.error = "Fill all the details";
             return next();
