@@ -23,6 +23,7 @@ module.exports = function(objectrepository) {
 
         res.locals.car.brand = req.body.brand;
         res.locals.car.price = req.body.price;
+        res.locals.car.year = req.body.year;
         res.locals.car.mileage = req.body.mileage;
         res.locals.car.description = req.body.description;
 
