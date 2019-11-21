@@ -1,11 +1,16 @@
 <%- include('headerAdmin') -%>
-<%- include('menu') -%>
+<%- include('menuAdmin') -%>
 
 <h2 class="d-flex justify-content-center" style="margin-top: 50px">Change here the car's details</h2>
 <hr style="width: 30%">
 <h1></h1>
 <div>
-    <form class="custom-form">
+    <form method="post" class="custom-form">
+        <% if (typeof(error) !== 'undefined') { %>
+            <div class="alert alert-danger">
+                <%= error %>
+            </div>
+        <% } %>
         <div class="input-group">
             <div class="custom-file">
                 <input type="file" class="custom-file-input" id="inputFile" aria-describedby="inputFile">
@@ -13,25 +18,38 @@
             </div>
         </div>
         <div class="form-group" style="margin-top: 15px">
-            <input type="text" class="form-control" id="modelName" placeholder="Model name">
+            <label for="brand">Model Name:</label><input type="text" class="form-control" id="brand" name="brand" <% if (car === 'undefined') {%>placeholder="Model name">
+            <% } else { %>
+                value="<%= car.brand %>">
+            <% } %>
+        </div>
+            <div class="form-group">
+                <label for="year">Year:</label><input type="text" class="form-control" id="year" name="year" <% if (car === 'undefined') {%>placeholder="Year">
+                <% } else { %>
+                    value="<%= car.year %>">
+                <% } %>
+            </div>
+        <div class="form-group">
+            <label for="mileage">Mileage: (km)</label><input type="text" class="form-control" id="mileage" name="mileage" <% if (car === 'undefined') {%>placeholder="Mileage (km)">
+            <% } else { %>
+                value="<%= car.mileage %>">
+            <% } %>
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" id="mileAge" placeholder="Mileage (km)">
-        </div>
-        <div class="form-group">
-            <input type="text" class="form-control" id="price" placeholder="Price (€)">
+            <label for="price">Price: (€)</label><input type="text" class="form-control" id="price" name="price" <% if (car === 'undefined') {%>placeholder="Price €">
+            <% } else { %>
+                value="<%= car.price %>"
+            <% } %>
         </div>
         <div class="form-group" style="margin-top: 15px">
-            <input type="text" class="form-control" id="carDescription" placeholder="Description">
+            <label for="description">Description:</label><input type="text" class="form-control" id="description" name="description" <% if (car === 'undefined') {%>placeholder="Description">
+            <% } else { %>
+                value="<%= car.description %>">
+            <% } %>
+        </div>
+        <div>
+            <input type="submit" value="Edit car" class="btn btn-dark" style="margin-left: auto; width: 100%; text-decoration: none">
         </div>
     </form>
-    <div>
-        <a href="/admin/carList" style="text-decoration: none">
-            <button class="btn btn-dark" style="margin-left: 35%">Edit Car</button>
-        </a>
-        <a href="/admin/carList" style="text-decoration: none">
-            <button class="btn btn-outline-secondary" style="margin-left: 5px">Cancel</button>
-        </a>
-    </div>
 </div>
 <%- include('footer') -%>

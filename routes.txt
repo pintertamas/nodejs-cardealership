@@ -3,7 +3,7 @@ Car Dealership
 -carList.html - table (edit, delete)
 -soldCars.html - table (delete)
 -addCar.html - form, (add button)
--editCar.html - form, (edit button)
+-edit.html - form, (edit button)
 -signUp.html - login form (sign up button)
 -resetPass.html - egy mező az emailnek (reset pass button)
 -browseCars.html - lista az autókról (view button, kép is kattintható)
@@ -69,11 +69,11 @@ GET, POST /admin/addCar
 		- ha volt valami érték beküldve -> form elemek azzal töltődjenek fel
         - ha nem, akkor nem
 
-GET /admin/editCar/:carid
+GET /admin/edit/:carid
 	authMW
 	getCarMW
 	saveCarMW
-	renderMW(editCarMW)
+	renderMW(editMW)
 		- ha volt valami érték beküldve -> form elemek azzal töltődjenek fel
     	- ha nem, akkor nem
 

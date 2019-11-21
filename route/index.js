@@ -1,6 +1,7 @@
 const authMW = require('../middleware/auth/authMW');
 const inverseAuthMW = require('../middleware/auth/inverseAuthMW');
 const mainRedirectMW = require('../middleware/auth/mainRedirectMW');
+const sessionCheckerMW = require('../middleware/auth/sessionCheckerMW');
 const checkAdminMW = require('../middleware/auth/checkAdminMW');
 const checkUserMW = require('../middleware/auth/checkUserMW');
 const checkUserLoginMW = require('../middleware/user/checkUserLoginMW');
@@ -8,11 +9,13 @@ const checkUserRegistrationMW = require('../middleware/user/checkUserRegistratio
 const logoutMW = require('../middleware/auth/logoutMW');
 const renderMW = require('../middleware/renderMW');
 const getUserMW = require('../middleware/user/getUserMW');
+const getUsersMW = require('../middleware/user/getUsersMW');
 const resetPassMW = require('../middleware/user/resetPassMW');
 const getCarMW = require('../middleware/car/getCarMW');
 const getCarsMW = require('../middleware/car/getCarsMW');
 const getSoldCarsMW = require('../middleware/car/getSoldCarsMW');
 const saveCarMW = require('../middleware/car/saveCarMW');
+const editCarMW = require('../middleware/car/editCarMW');
 const delCarMW = require('../middleware/car/delCarMW');
 const buyCarMW = require('../middleware/car/buyCarMW');
 
@@ -41,12 +44,14 @@ module.exports = function (app) {
     app.get('/shop',
 		authMW(objRepo),
 		checkUserMW(objRepo),
+		getCarsMW(objRepo),
 		getUserMW(objRepo),
     	renderMW(objRepo, 'browse'));
 
-    app.use('/shop/:carid/buy',
+    app.use('/shop/buy/:carid',
         authMW(objRepo),
         checkUserMW(objRepo),
+        getUserMW(objRepo),
         getCarMW(objRepo),
         buyCarMW(objRepo));
 
@@ -65,6 +70,7 @@ module.exports = function (app) {
     app.get('/admin/soldcars',
 		authMW(objRepo),
 		checkAdminMW(objRepo),
+		getUsersMW(objRepo),
 		getSoldCarsMW(objRepo),
 		renderMW(objRepo, 'sold'));
 
@@ -75,11 +81,11 @@ module.exports = function (app) {
     	saveCarMW(objRepo),
     	renderMW(objRepo, 'add'));
 
-    app.use('/admin/editCar/:carid',
+    app.use('/admin/edit/:carid',
     	authMW(objRepo),
     	checkAdminMW(objRepo),
     	getCarMW(objRepo),
-    	saveCarMW(objRepo),
+    	editCarMW(objRepo),
     	renderMW(objRepo, 'edit'));
 
     app.get('/admin/delete/:carid',

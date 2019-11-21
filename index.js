@@ -12,11 +12,13 @@ app.use(express.static('static'));
 app.use(express.static('public'));
 
 app.use(session({
-    secret: "cookie_secret",
-    name: "cookie",
-    proxy: true,
-    resave: true,
-    saveUninitialized: true
+    key: 'user_sid',
+    secret: 'sosecretomg',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        expires: 600000
+    }
 }));
 
 // Load routing

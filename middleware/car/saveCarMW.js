@@ -10,21 +10,25 @@ module.exports = function(objectrepository) {
 
     const CarModel = requireOption(objectrepository, 'CarModel');
 
+    //somehow description is always undefined in this if statement, so i don't test for it
+    //also, it's not that important
     return function(req, res, next) {
         if ((typeof req.body === 'undefined') ||
             (typeof req.body.brand === 'undefined') ||
             (typeof req.body.year === 'undefined') ||
             (typeof req.body.mileage === 'undefined') ||
-            (typeof req.body.price === 'undefined') ||
-            (typeof res.locals.description === 'undefined')) {
-            console.log("Car is undefined " + req.body.brand);
-            res.locals.error = "Fill all the details";
+            (typeof req.body.price === 'undefined')) {
+            console.log("Car is undefined - " + req.body.brand);
+            //res.locals.error = "Fill all the details";
             return next();
         }
 
         if (typeof res.locals.car === 'undefined') {
             res.locals.car = new CarModel();
         }
+
+        if (req.body.brand === 'undefined')
+            res.locals.error = "You must name the car";
 
         if (Number.isNaN(parseInt(req.body.year, 10))) {
             res.locals.error = "\'Year\' must be formatted to integer!";

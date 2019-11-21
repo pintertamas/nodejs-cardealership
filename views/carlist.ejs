@@ -3,7 +3,7 @@
 <table class="table table-hover table-dark table-sm">
     <thead>
     <tr>
-        <th scope="col">Car ID</th>
+        <th scope="col">#</th>
         <th scope="col">Model</th>
         <th scope="col">Mileage (km)</th>
         <th scope="col">Price (€)</th>
@@ -11,10 +11,11 @@
     </tr>
     </thead>
     <tbody>
+    <%     var number = 1; %>
     <% cars.forEach(function(cars) { %>
         <tr>
             <th scope="row">
-                <%= cars._id %>
+                <%= number++ %>
             </th>
             <td>
                 <%= cars.brand %>
@@ -26,7 +27,7 @@
                 <%= cars.price %>
             </td>
             <td>
-                <a href="/admin/editCar/<%= cars._id %>" style="text-decoration: none">
+                <a href="/admin/edit/<%= cars._id %>" style="text-decoration: none">
                     <button class="button btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
                 </a>
                 <a href="/admin/delete/<%= cars._id %>">

@@ -29,13 +29,14 @@
     </tr>
     </thead>
     <tbody>
+    <% var number = 1; %>
     <% soldcars.forEach(function(soldCar) { %>
         <tr>
             <td>
-                <%= soldCar._id %>
+                <%= number++ %>
             </td>
             <td>
-                <%= soldCar._owner %>
+                <%= soldCar._id %>
             </td>
             <td>
                 <%= soldCar.brand %>
