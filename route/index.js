@@ -15,6 +15,7 @@ const getCarMW = require('../middleware/car/getCarMW');
 const getCarsMW = require('../middleware/car/getCarsMW');
 const getSoldCarsMW = require('../middleware/car/getSoldCarsMW');
 const saveCarMW = require('../middleware/car/saveCarMW');
+const getOwnerMW = require('../middleware/car/getOwnerMW');
 const editCarMW = require('../middleware/car/editCarMW');
 const delCarMW = require('../middleware/car/delCarMW');
 const buyCarMW = require('../middleware/car/buyCarMW');
@@ -37,7 +38,8 @@ module.exports = function (app) {
 		checkUserLoginMW(objRepo),
     	renderMW(objRepo, 'home'));
 
-    app.get('/user/resetpass',
+    app.use('/user/resetpass',
+        getUsersMW(objRepo),
         resetPassMW(objRepo),
         renderMW(objRepo, 'resetpass'));
 
@@ -71,6 +73,7 @@ module.exports = function (app) {
 		authMW(objRepo),
 		checkAdminMW(objRepo),
 		getUsersMW(objRepo),
+		getOwnerMW(objRepo),
 		getSoldCarsMW(objRepo),
 		renderMW(objRepo, 'sold'));
 

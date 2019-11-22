@@ -13,14 +13,14 @@ module.exports = function (objectrepository) {
 
         //not enough parameter
         if ((typeof req.body === 'undefined') ||
+            (typeof req.body.email === 'undefined') ||
             (typeof req.body.name === 'undefined') ||
             (typeof req.body.password === 'undefined')) {
-            console.log("checkUserRegistrationMW " + req.body);
             return next();
         }
 
-        if (req.body.name === "admin" || req.body.password === "admin" || req.body.email === "admin") {
-            console.log("error, you cant be admin :(");
+        if (req.body.name === "admin") {
+            res.locals.error = "This username or email is not allowed!";
             return next();
         }
 
@@ -33,6 +33,13 @@ module.exports = function (objectrepository) {
                 //res.locals.error.push('This username has already been registered!');
                 console.log("This username is already in use");
                 res.locals.error = "This username is already in use";
+                return next();
+            }
+
+            if (req.body.email.length < 4) {
+                //res.locals.error.push('The name should be at least 4 characters!');
+                console.log("The email should be at least 4 characters!");
+                res.locals.error = "The email should be at least 4 characters long!";
                 return next();
             }
 
@@ -52,7 +59,7 @@ module.exports = function (objectrepository) {
                 //redirect to /login
                 console.log("User created with this name: " + newUser.name);
                 console.log("Redirecting to /shop, creating session");
-                req.session.loggedIn = newUser._id;
+                req.session.loggedIn = req.sessionID;
                 req.session.admin = false;
                 return res.redirect('/shop');
             });

@@ -14,7 +14,7 @@ module.exports = function (objectrepository) {
         //check if the user is the admin
         if (req.body.name === "admin" && req.body.password === "admin") {
             console.log("The admin's here");
-            req.session.loggedIn = true;
+            req.session.loggedIn = req.sessionID;
             req.session.admin = true;
             return res.redirect('/admin/carlist');
         }
@@ -45,8 +45,8 @@ module.exports = function (objectrepository) {
 
             //login is ok, save id to session
             console.log("login is ok, saving session");
-            req.session.loggedIn = result._id;
-            req.session.adin = false;
+            req.session.loggedIn = req.sessionID;
+            req.session.admin = false;
 
             //redirect to / so the app can decide where to go next
             return res.redirect('/shop');

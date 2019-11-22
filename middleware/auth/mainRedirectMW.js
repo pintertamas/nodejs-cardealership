@@ -7,7 +7,7 @@
 module.exports = function () {
     return function (req, res) {
 
-        if (typeof req.session.loggedIn === 'undefined') {
+        if (typeof req.session.loggedIn !== req.sessionID) {
             console.log("session id:" + req.session.loggedIn);
             return res.redirect('/user/login');
         } else {
