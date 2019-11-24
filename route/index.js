@@ -1,7 +1,6 @@
 const authMW = require('../middleware/auth/authMW');
 const inverseAuthMW = require('../middleware/auth/inverseAuthMW');
 const mainRedirectMW = require('../middleware/auth/mainRedirectMW');
-const sessionCheckerMW = require('../middleware/auth/sessionCheckerMW');
 const checkAdminMW = require('../middleware/auth/checkAdminMW');
 const checkUserMW = require('../middleware/auth/checkUserMW');
 const checkUserLoginMW = require('../middleware/user/checkUserLoginMW');
@@ -15,6 +14,7 @@ const getCarMW = require('../middleware/car/getCarMW');
 const getCarsMW = require('../middleware/car/getCarsMW');
 const getSoldCarsMW = require('../middleware/car/getSoldCarsMW');
 const saveCarMW = require('../middleware/car/saveCarMW');
+const uploadImageMW = require('../middleware/car/uploadImageMW');
 const getOwnerMW = require('../middleware/car/getOwnerMW');
 const editCarMW = require('../middleware/car/editCarMW');
 const delCarMW = require('../middleware/car/delCarMW');
@@ -98,8 +98,7 @@ module.exports = function (app) {
     	delCarMW(objRepo));
 
 	app.get('/logout',
-		logoutMW(objRepo),
-	);
+		logoutMW(objRepo));
 
     app.use('/',
         mainRedirectMW());

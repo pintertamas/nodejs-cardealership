@@ -36,10 +36,10 @@ module.exports = function (objectrepository) {
                 return next();
             }
 
-            if (req.body.email.length < 4) {
-                //res.locals.error.push('The name should be at least 4 characters!');
-                console.log("The email should be at least 4 characters!");
-                res.locals.error = "The email should be at least 4 characters long!";
+            //check whether the given email address if formatted correctly or not
+            const checkEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+            if (checkEmail.test(req.body.email) === false) {
+                res.locals.error = "This is not an email";
                 return next();
             }
 

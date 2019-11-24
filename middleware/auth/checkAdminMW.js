@@ -6,7 +6,7 @@ const requireOption = require('../requireOption');
 
 module.exports = function(objectrepository) {
     return function(req, res, next) {
-        if (req.session.admin !== true) {
+        if (req.session.admin === false) {
             console.log('You are not the admin how did u get here');
             return res.redirect('/logout');
         }

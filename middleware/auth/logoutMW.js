@@ -5,6 +5,7 @@ const requireOption = require('../requireOption');
 
 module.exports = function(objectrepository) {
     return function(req, res, next) {
+        //req.session.admin = "definitelynottrueorfalse";
         delete req.session.loggedIn;
         delete req.session.admin;
         delete req.sessionID;

@@ -7,10 +7,7 @@
 module.exports = function () {
     return function (req, res) {
 
-        if (typeof req.session.loggedIn !== req.sessionID) {
-            console.log("session id:" + req.session.loggedIn);
-            return res.redirect('/user/login');
-        } else {
+        if (typeof req.session.loggedIn === req.sessionID) {
             if (req.session.admin === true) {
                 console.log("session id:" + req.session.loggedIn);
                 return res.redirect('/admin/carlist');
@@ -19,6 +16,9 @@ module.exports = function () {
                 console.log("session id:" + req.session.loggedIn);
                 return res.redirect('/shop');
             }
+        } else {
+            console.log("session id:" + req.session.loggedIn);
+            return res.redirect('/user/login');
         }
     };
 };

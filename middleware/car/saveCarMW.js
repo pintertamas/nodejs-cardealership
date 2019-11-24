@@ -48,7 +48,7 @@ module.exports = function(objectrepository) {
             return next();
         }
 
-        console.log("Creating car");
+        console.log("Creating the car");
 
         const newCar = new CarModel();
         newCar.brand = req.body.brand;
