@@ -17,7 +17,7 @@ module.exports = function () {
                 return res.redirect('/shop');
             }
         } else {
-            console.log("session id:" + req.session.loggedIn);
+            console.log("session id: " + req.session.loggedIn);
             return res.redirect('/user/login');
         }
     };

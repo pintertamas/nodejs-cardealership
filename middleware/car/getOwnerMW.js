@@ -6,11 +6,10 @@ module.exports = function(objectrepository) {
     return function(req, res, next) {
             const ownerId = req.query.ownerId;
             UserModel.findById(ownerId).populate("_owner").exec(function(err, owner) {
-                if(err){
+                if(err || !owner){
                     console.log(err);
                 } else {
                     console.log(owner);
-                    res.render("./player/resultTeam", {teams: owner });
                 }
             });
             return next();

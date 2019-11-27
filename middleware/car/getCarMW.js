@@ -15,6 +15,7 @@ module.exports = function(objectrepository) {
             }
 
             res.locals.car = car;
+            console.log(car);
             return next();
         });
     };

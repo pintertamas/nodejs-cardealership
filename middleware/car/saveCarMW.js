@@ -1,4 +1,6 @@
 const requireOption = require('../requireOption');
+const multer = require('multer');
+const path = require('path');
 
 /**
  * Using POST params update or save a car to the database
@@ -48,8 +50,30 @@ module.exports = function(objectrepository) {
             return next();
         }
 
-        console.log("Creating the car");
+        // Set Storage Engine
+        /*const storage = multer.diskStorage({
+            destination: 'public/uploads',
+            filename: "test"
+        });
 
+        // Init Upload
+        const upload = multer({
+            storage: storage,
+            limits: {filesize: 5000000},
+            fileFilter: function (req, file, cb) {
+                checkFileType(file, cb);
+            }
+        }).single('image');
+
+        module.exports = upload;
+
+        upload(req, res, (err)=>{
+            if (!err) {
+                console.log("File: " + req.body.file);
+            }
+        });*/
+
+        // Creating new car
         const newCar = new CarModel();
         newCar.brand = req.body.brand;
         newCar.year = parseInt(req.body.year, 10);
@@ -58,6 +82,7 @@ module.exports = function(objectrepository) {
         newCar.description = req.body.description;
         newCar.sold = false;
 
+        // Saving the new car to the database
         newCar.save(function (err) {
             //redirect to /login
             console.log("Car created with this name: " + newCar.brand);

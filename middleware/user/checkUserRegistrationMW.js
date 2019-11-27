@@ -55,10 +55,14 @@ module.exports = function (objectrepository) {
             newUser.email = req.body.email;
             newUser.name = req.body.name;
             newUser.password = req.body.password;
-            newUser.save(function (err) {
+            newUser.save(function () {
                 //redirect to /login
                 console.log("User created with this name: " + newUser.name);
                 console.log("Redirecting to /shop, creating session");
+                res.locals.user = newUser;
+                req.session.user = newUser;
+                console.log('user is: ');
+                console.log(req.locals.user);
                 req.session.loggedIn = req.sessionID;
                 req.session.admin = false;
                 return res.redirect('/shop');

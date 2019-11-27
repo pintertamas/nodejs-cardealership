@@ -13,6 +13,11 @@
                     <div class="d-flex justify-content-center" style="margin-bottom: 30px">
                         <h1 class="align-items-center" style="color: white">Login</h1>
                     </div>
+                    <% if (typeof(error) !== 'undefined') { %>
+                        <div class="alert alert-danger">
+                            <%= error %>
+                        </div>
+                    <% } %>
                     <div class="input-group mb-3">
                         <div class="input-group-append">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>

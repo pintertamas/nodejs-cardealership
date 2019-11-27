@@ -31,25 +31,36 @@ module.exports = function (objectrepository) {
             name: req.body.name
         }, function (err, result) {
             if ((err) || (!result)) {
-                res.locals.error = 'Your name is not registered!';
+                res.locals.error = 'Incorrect username/password';
                 console.log("Your name is not registered!");
                 return next();
             }
 
             //check password
             if (result.password !== req.body.password) {
-                res.locals.error = 'Wrong password!';
+                res.locals.error = 'This username/password is incorrect';
                 console.log("Wrong password!");
                 return next();
             }
 
             //login is ok, save id to session
             console.log("login is ok, saving session");
+            res.locals.user = result;
+            req.session.user = result;
+            console.log('user is: ');
+            console.log(res.locals.user);
             req.session.loggedIn = req.sessionID;
             req.session.admin = false;
 
-            //redirect to / so the app can decide where to go next
-            return res.redirect('/shop');
+            // saving the user
+            res.locals.user.save(err => {
+                if (err) {
+                    return next(err);
+                }
+
+                // redirect to / so the app can decide where to go next
+                return res.redirect('/shop');
+            });
         });
     };
 };
