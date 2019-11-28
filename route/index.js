@@ -72,7 +72,6 @@ module.exports = function (app) {
 		authMW(objRepo),
 		checkAdminMW(objRepo),
 		getUsersMW(objRepo),
-		//getOwnerMW(objRepo),
 		getSoldCarsMW(objRepo),
 		renderMW(objRepo, 'sold'));
 
@@ -88,7 +87,8 @@ module.exports = function (app) {
     	authMW(objRepo),
     	checkAdminMW(objRepo),
     	getCarMW(objRepo),
-    	editCarMW(objRepo),
+		upload.single('file'),
+		editCarMW(objRepo),
     	renderMW(objRepo, 'edit'));
 
     app.get('/admin/delete/:carid',

@@ -1,19 +1,15 @@
-const requireOption = require('../requireOption');
-const multer = require('multer');
-const path = require('path');
-
 /**
  * Using POST params update or save a car to the database
  * If res.locals.car is there, it's an update otherwise this middleware creates an entity
  * Redirects to /admin/CarList after success
  */
+const fs = require('fs');
+const requireOption = require('../requireOption');
 
 module.exports = function(objectrepository) {
 
     const CarModel = requireOption(objectrepository, 'CarModel');
 
-    //somehow description is always undefined in this if statement, so i don't test for it
-    //also, it's not that important
     return function(req, res, next) {
         if ((typeof req.body === 'undefined') ||
             (typeof req.body.brand === 'undefined') ||
@@ -21,7 +17,6 @@ module.exports = function(objectrepository) {
             (typeof req.body.mileage === 'undefined') ||
             (typeof req.body.price === 'undefined')) {
             console.log("Car is undefined - " + req.body.brand);
-            //res.locals.error = "Fill all the details";
             return next();
         }
 
@@ -34,19 +29,16 @@ module.exports = function(objectrepository) {
 
         if (Number.isNaN(parseInt(req.body.year, 10))) {
             res.locals.error = "\'Year\' must be formatted to integer!";
-            //return next(new Error('\'Year\' must be formatted to integer!'));
             return next();
         }
 
         if (Number.isNaN(parseInt(req.body.mileage, 10))) {
             res.locals.error = "\'Mileage\' must be formatted to integer!";
-            //return next(new Error('\'Mileage\' must be formatted to integer!'));
             return next();
         }
 
         if (Number.isNaN(parseInt(req.body.price, 10))) {
             res.locals.error = "\'Price\' must be formatted to integer!";
-            //return next(new Error('\'Price\' must be formatted to integer!'));
             return next();
         }
 
@@ -81,13 +73,24 @@ module.exports = function(objectrepository) {
         newCar.price = parseInt(req.body.price, 10);
         newCar.description = req.body.description;
         newCar.sold = false;
+        newCar.path = req.file.filename;
+        console.log("original name:" + req.file.filename);
+        fs.rename(`public/uploads/${req.file.filename}`, `public/uploads/${req.file.filename}.jpg`, (err)=>{
+            if (err) {
+                console.log(err);
+            }
+            console.log("new name:" +newCar.path);
+        });
+        newCar.path = req.file.filename;
+
+        console.log(req.file);
+        console.log("Path to the image: " + newCar.path);
 
         // Saving the new car to the database
         newCar.save(function (err) {
             //redirect to /login
-            console.log("Car created with this name: " + newCar.brand);
+            console.log("This car was created: " + newCar);
             return res.redirect('/admin/carlist');
-
         });
     };
 };

@@ -15,7 +15,7 @@ module.exports = function(objectrepository) {
                 return next(err);
             }
 
-            return res.redirect('/admin/sold');
+            return res.redirect('/admin/soldcars');
         });
     };
 };
