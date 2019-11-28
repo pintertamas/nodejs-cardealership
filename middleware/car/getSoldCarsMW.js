@@ -5,9 +5,10 @@ const requireOption = require('../requireOption');
 
 module.exports = function(objectrepository) {
     const CarModel = requireOption(objectrepository, 'CarModel');
+
     return function(req, res, next) {
-        // maaaagic....
-        CarModel.find({ sold: true }, (err, soldcars) => {
+
+        CarModel.find({ sold: true }).populate("_owner").exec((err, soldcars) => {
             if (err || !soldcars) {
                 return next(err);
             }

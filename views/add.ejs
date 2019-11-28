@@ -21,7 +21,7 @@
 <hr style="width: 30%">
 <h1></h1>
 <div>
-    <form action="/admin/addcar" method="post" class="custom-form">
+    <form action="/admin/addcar" method="post" class="custom-form" enctype="multipart/form-data">
         <% if (typeof(error) !== 'undefined') { %>
             <div class="alert alert-danger">
                 <%= error %>

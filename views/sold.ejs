@@ -32,13 +32,13 @@
     <tbody>
     <% var number = 1; %>
     <% soldcars.forEach(function(soldCar) { %>
-        <tr>
+            <tr>
             <td>
                 <%= number++ %>
             </td>
             <td>
-                <!-- ide kellene írni a leendő tulajdonos nevét -->
-                <%= soldCar._owner %>
+                <!-- ide kellene írni a leendő tulajdonos email címét -->
+                <%= soldCar._owner.email %>
             </td>
             <td>
                 <%= soldCar.brand %>

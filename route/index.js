@@ -7,20 +7,21 @@ const checkUserLoginMW = require('../middleware/user/checkUserLoginMW');
 const checkUserRegistrationMW = require('../middleware/user/checkUserRegistrationMW');
 const logoutMW = require('../middleware/auth/logoutMW');
 const renderMW = require('../middleware/renderMW');
-const getUserMW = require('../middleware/user/getUserMW');
 const getUsersMW = require('../middleware/user/getUsersMW');
 const resetPassMW = require('../middleware/user/resetPassMW');
 const getCarMW = require('../middleware/car/getCarMW');
 const getCarsMW = require('../middleware/car/getCarsMW');
 const getSoldCarsMW = require('../middleware/car/getSoldCarsMW');
 const saveCarMW = require('../middleware/car/saveCarMW');
-const getOwnerMW = require('../middleware/car/getOwnerMW');
 const editCarMW = require('../middleware/car/editCarMW');
 const delCarMW = require('../middleware/car/delCarMW');
 const buyCarMW = require('../middleware/car/buyCarMW');
 
 const UserModel = require('../models/user');
 const CarModel = require('../models/car');
+
+const multer  = require('multer');
+const upload = multer({ dest: 'public/uploads' });
 
 module.exports = function (app) {
     const objRepo = {
@@ -79,6 +80,7 @@ module.exports = function (app) {
     	authMW(objRepo),
     	checkAdminMW(objRepo),
     	getCarMW(objRepo),
+		upload.single('file'),
     	saveCarMW(objRepo),
     	renderMW(objRepo, 'add'));
 

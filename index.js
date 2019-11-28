@@ -12,8 +12,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 // PUBLIC and STATIC directories
-app.use(express.static('./static'));
-app.use(express.static('./public'));
+app.use(express.static('static'));
+app.use(express.static('public'));
 
 // SESSION handling
 app.use(session({
