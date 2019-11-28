@@ -3,12 +3,18 @@
  * Redirects to /admin/carList after delete
  */
 const requireOption = require('../requireOption');
+const fs = require('fs');
 
 module.exports = function(objectrepository) {
     return function(req, res, next) {
         if (typeof res.locals.car === 'undefined') {
             return next();
         }
+
+        fs.unlink(`public/uploads/${res.locals.car.path}.jpg`, (err) => {
+            if (err) return next(err);
+            console.log('successfully deleted ' + `public/uploads/${res.locals.car.path}.jpg`);
+        });
 
         res.locals.car.remove(err => {
             if (err) {

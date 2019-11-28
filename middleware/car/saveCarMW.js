@@ -7,7 +7,6 @@ const fs = require('fs');
 const requireOption = require('../requireOption');
 
 module.exports = function(objectrepository) {
-
     const CarModel = requireOption(objectrepository, 'CarModel');
 
     return function(req, res, next) {
@@ -42,29 +41,6 @@ module.exports = function(objectrepository) {
             return next();
         }
 
-        // Set Storage Engine
-        /*const storage = multer.diskStorage({
-            destination: 'public/uploads',
-            filename: "test"
-        });
-
-        // Init Upload
-        const upload = multer({
-            storage: storage,
-            limits: {filesize: 5000000},
-            fileFilter: function (req, file, cb) {
-                checkFileType(file, cb);
-            }
-        }).single('image');
-
-        module.exports = upload;
-
-        upload(req, res, (err)=>{
-            if (!err) {
-                console.log("File: " + req.body.file);
-            }
-        });*/
-
         // Creating new car
         const newCar = new CarModel();
         newCar.brand = req.body.brand;
@@ -77,7 +53,7 @@ module.exports = function(objectrepository) {
             res.locals.error = "You forgot to choose a picture";
             return next();
         }
-        newCar.path = req.file.filename;
+        console.log(req.file.filename);
         fs.rename(`public/uploads/${req.file.filename}`, `public/uploads/${req.file.filename}.jpg`, (err)=>{
             if (err) {
                 console.log(err);
