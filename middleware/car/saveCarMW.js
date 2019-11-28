@@ -73,6 +73,10 @@ module.exports = function(objectrepository) {
         newCar.price = parseInt(req.body.price, 10);
         newCar.description = req.body.description;
         newCar.sold = false;
+        if (typeof req.file === 'undefined') {
+            res.locals.error = "You forgot to choose a picture";
+            return next();
+        }
         newCar.path = req.file.filename;
         fs.rename(`public/uploads/${req.file.filename}`, `public/uploads/${req.file.filename}.jpg`, (err)=>{
             if (err) {
