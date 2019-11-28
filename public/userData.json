@@ -1,0 +1,8 @@
+{"_id":{"$oid":"5dcdaabb60f16a05ead5e0d1"},"email":"tomi@bme.hu","name":"tomi","password":"jelszo","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5dcafb6032205d3c2c02cdff"},"email":"asdf@asdf.com","name":"asdf","password":"0hyrfvvoakh","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5dcfcd7aee8ad61f8c6665c9"},"email":"pistike@gmail.com","name":"Pistike","password":"titkos","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5dcfce1582a9bd20e4778f01"},"email":"ronaldo420@yahoo.com","name":"ronaldooo","password":"fociii","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5dcfcffd3c50993500ad69c2"},"email":"proudmercedesowner@mercedes.com","name":"merci","password":"password","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5dd7da80a117ee51a8587b4d"},"email":"email","name":"werfwerf","password":"werfwerf","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5dd8212e54305c53d7045a79"},"email":"test@test.com","name":"testuser","password":"lr2e50wmhk8","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5ddc2ad2c4a94563e72dce89"},"email":"tesztemail@teszt.com","name":"névvvv","password":"jelszóóó","__v":{"$numberInt":"0"}}
