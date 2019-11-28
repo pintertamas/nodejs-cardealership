@@ -74,17 +74,13 @@ module.exports = function(objectrepository) {
         newCar.description = req.body.description;
         newCar.sold = false;
         newCar.path = req.file.filename;
-        console.log("original name:" + req.file.filename);
         fs.rename(`public/uploads/${req.file.filename}`, `public/uploads/${req.file.filename}.jpg`, (err)=>{
             if (err) {
                 console.log(err);
             }
-            console.log("new name:" +newCar.path);
         });
         newCar.path = req.file.filename;
-
         console.log(req.file);
-        console.log("Path to the image: " + newCar.path);
 
         // Saving the new car to the database
         newCar.save(function (err) {
