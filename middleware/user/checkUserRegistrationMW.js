@@ -62,7 +62,7 @@ module.exports = function (objectrepository) {
                 res.locals.user = newUser;
                 req.session.user = newUser;
                 console.log('user is: ');
-                console.log(req.locals.user);
+                console.log(res.locals.user);
                 req.session.loggedIn = req.sessionID;
                 req.session.admin = false;
                 return res.redirect('/shop');
