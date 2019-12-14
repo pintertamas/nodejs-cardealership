@@ -38,10 +38,10 @@
             </td>
             <td>
                 <!-- itt van a leendő tulajdonos email címe -->
-                <% if (typeof soldCar._owner === 'undefined') { %>
-                    Deleted user
-                <% } else { %>
+                <% if (typeof soldCar._owner !== 'undefined') { %>
                     <%= soldCar._owner.email %>
+                <% } else { %>
+                    Deleted user
                 <% } %>
             </td>
             <td>

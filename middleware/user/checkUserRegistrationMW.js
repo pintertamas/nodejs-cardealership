@@ -1,5 +1,4 @@
 const requireOption = require('../requireOption');
-
 /**
  * Check if the email address is already registered, if not
  * create the user (no extra checks on password)
