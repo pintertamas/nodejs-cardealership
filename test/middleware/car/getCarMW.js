@@ -1,7 +1,7 @@
 const expect = require('chai').expect;
 const getCarMW = require('../../../middleware/car/getCarMW');
 
-describe('getUserList middleware ', function () {
+describe('getCar middleware', function () {
 
     it('should set res.locals.car with a car object from the database', function (done) {
 

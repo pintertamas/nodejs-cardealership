@@ -44,39 +44,39 @@ module.exports = function (app) {
         renderMW(objRepo, 'resetpass'));
 
     app.get('/shop',
-		authMW(objRepo),
+		authMW(),
 		checkUserMW(objRepo),
 		getCarsMW(objRepo),
     	renderMW(objRepo, 'browse'));
 
     app.use('/shop/buy/:carid',
-        authMW(objRepo),
+        authMW(),
         checkUserMW(objRepo),
 		getCarMW(objRepo),
         getUsersMW(objRepo),
         buyCarMW(objRepo));
 
     app.get('/shop/:carid',
-    	authMW(objRepo),
+    	authMW(),
     	checkUserMW(objRepo),
 		getCarMW(objRepo),
     	renderMW(objRepo, 'inspect'));
 
     app.get('/admin/carlist',
-		authMW(objRepo),
+		authMW(),
 		checkAdminMW(objRepo),
     	getCarsMW(objRepo),
     	renderMW(objRepo, 'carlist'));
 
     app.get('/admin/soldcars',
-		authMW(objRepo),
+		authMW(),
 		checkAdminMW(objRepo),
 		getUsersMW(objRepo),
 		getSoldCarsMW(objRepo),
 		renderMW(objRepo, 'sold'));
 
     app.use('/admin/addcar',
-    	authMW(objRepo),
+    	authMW(),
     	checkAdminMW(objRepo),
     	getCarMW(objRepo),
 		upload.single('file'),
@@ -84,7 +84,7 @@ module.exports = function (app) {
     	renderMW(objRepo, 'add'));
 
     app.use('/admin/edit/:carid',
-    	authMW(objRepo),
+    	authMW(),
     	checkAdminMW(objRepo),
     	getCarMW(objRepo),
 		upload.single('file'),
@@ -92,7 +92,7 @@ module.exports = function (app) {
     	renderMW(objRepo, 'edit'));
 
     app.get('/admin/delete/:carid',
-    	authMW(objRepo),
+    	authMW(),
     	checkAdminMW(objRepo),
     	getCarMW(objRepo),
     	delCarMW(objRepo));
