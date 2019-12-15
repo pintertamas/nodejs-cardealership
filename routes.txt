@@ -15,7 +15,7 @@ renderMW
 
 middleware/auth/
 	checkAdminMW.js
-	authMW.js
+	checkAdminMW.js
 
 middleware/user/
 	getUserMW.js
@@ -39,30 +39,30 @@ GET /user/signup
         - ha nem, akkor nem
 
 GET /shop
-	authMW
+	checkAdminMW
 	getUserMW
 	renderMW(browseCars.html)
 
 GET /shop/:carid
-	authMW
+	checkAdminMW
 	getCarMW
 	renderMW(inspectCar.html)
 
 GET, POST /shop/:carid/buy
-	authMW
+	checkAdminMW
 	getCarMW
 	buyCarMW
 
 GET /admin/carList
-	authMW
+	checkAdminMW
 	renderMW(carList.html)
 
 GET /admin/soldCars
-	authMW
+	checkAdminMW
 	renderMW(soldCars)
 
 GET, POST /admin/addCar
-	authMW
+	checkAdminMW
 	getCarMW
 	saveCarMW
 	renderMW(addCar)
@@ -70,7 +70,7 @@ GET, POST /admin/addCar
         - ha nem, akkor nem
 
 GET /admin/edit/:carid
-	authMW
+	checkAdminMW
 	getCarMW
 	saveCarMW
 	renderMW(editMW)
@@ -78,7 +78,7 @@ GET /admin/edit/:carid
     	- ha nem, akkor nem
 
 GET /admin/deleteCar:carid
-	authMW
+	checkAdminMW
 	getCarMW
 	delCarMW
 
